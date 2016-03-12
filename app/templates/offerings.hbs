@@ -1,5 +1,9 @@
+<button {{action 'toggleShowNewOfferingForm'}} class="btn btn-default">Add new offering</button>
+
+{{#if isNewOfferingFormVisible}}
 <h3>New Offering</h3>
 {{new-offering-form}}
+{{/if}}
 
 <h3>Latest Offerings</h3>
 {{latest-offerings model=model}}

@@ -3,17 +3,16 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     store: Ember.inject.service(),
     init: function() {
-        this._super(arguments);
+        this._super(arguments);        
         let parishioners = this.get('store').findAll('parishioner');
         this.set('parishioners', parishioners);
-        this.set('offering', { date: '2016-10-03' });
+        this.setDefaultOffering();
     },
     didInsertElement: function() {
         this.$('select').chosen({ max_selected_options: 1 });
-        console.log(this.$('select option').length)  
     },
-    didRender: function() {
-        this.$('select').trigger('chosen:updated');
+    didUpdate: function() {
+        this.$('select').trigger('chosen:updated');   
     },
     actions: {
         selectParishioner: function(id) {
@@ -21,10 +20,27 @@ export default Ember.Component.extend({
             if (id != 0)   
                 parishioner = this.get('store').findRecord('parishioner', id)
             this.set('offering.parishioner', parishioner);
+            this.focusValueInput();
         },
         addOffering: function() {
             let offering = this.get('store').createRecord('offering', this.get('offering'));
             offering.save();
+            this.resetChosen();
+            this.setDefaultOffering();
+            this.focusParishionerInput();
         }
+    },
+    setDefaultOffering: function() {
+        this.set('offering', { date: moment().format() });
+    },
+    focusParishionerInput: function(){
+        this.$('select').trigger('chosen:activate');    
+    },
+    focusValueInput: function() {
+        this.$('#offering-value').focus();    
+    },
+    resetChosen: function() {
+        this.$('option:selected').removeAttr('selected');
+        this.$('select').trigger('chosen:updated');
     }
 });

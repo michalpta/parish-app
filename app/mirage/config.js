@@ -49,6 +49,12 @@ export default function() {
         };
     })
     
+    this.get('/offerings/:id', function(db, request) {
+        return {
+            data: db.offerings.find(request.params.id)
+        };
+    })
+    
     this.post('/offerings', function(db, request) {
         var attrs = JSON.parse(request.requestBody);
         var offering = db.offerings.insert(attrs);

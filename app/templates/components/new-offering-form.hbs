@@ -12,22 +12,15 @@
             </div>
             <div><label>Value</label></div>
             <div>
-                {{input value=offering.value class='form-control'}}
+                {{input value=offering.value class='form-control offering-value' id='offering-value'}}
             </div>
             <div><label>Date</label></div>
             <div>
-                {{input value=offering.date class='form-control'}}
+                {{input value=offering.date class='form-control' id='offering-date'}}
             </div>
         </fieldset>
         <div>
             <button {{action 'addOffering'}} class="btn btn-success form-control">Add</button>
         </div>
     </form>
-
-    <div class="alert alert-success">
-        <p>NEW OFFERING</p>
-        <p>Parishioner: {{offering.parishioner.name}}</p>
-        <p>Value: {{offering.value}}</p>
-        <p>Date: {{offering.date}}</p>
-    </div>
 </div>
