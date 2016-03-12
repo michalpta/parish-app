@@ -1,3 +1,18 @@
-<h2 id="title">Welcome to Ember</h2>
-
-{{outlet}}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 id="title">Parish App</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {{#link-to 'offerings' class="btn btn-primary"}}Offerings{{/link-to}}
+            {{#link-to 'parishioners' class="btn btn-primary"}}Parishioners{{/link-to}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {{outlet}}
+        </div>
+    </div>
+</div>

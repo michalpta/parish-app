@@ -1,0 +1,21 @@
+{{input value=quickSearch class='form-control' placeholder='Quick search through offerings...'}}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Value</th><th>Date</th><th>Parishioner</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each searchableOfferings as |offering|}}
+    <tr>
+        <td>{{offering.value}}</td>
+        <td>{{offering.date}}</td>
+        <td>{{offering.parishioner.name}}</td>
+    </tr>
+    {{else}}
+    <tr>
+        <td colspan="3">No offerings yet.</td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
