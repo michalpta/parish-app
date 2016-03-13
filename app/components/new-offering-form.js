@@ -10,28 +10,33 @@ export default Ember.Component.extend({
     },
     didInsertElement: function() {
         this.$('select').chosen({ max_selected_options: 1 });
-    },
-    didUpdate: function() {
-        this.$('select').trigger('chosen:updated');   
+        this.focusParishionerInput();
     },
     actions: {
         selectParishioner: function(id) {
             let parishioner = null;
-            if (id != 0)   
+            if (id != 0) {   
                 parishioner = this.get('store').findRecord('parishioner', id)
+                this.focusValueInput();
+            }
             this.set('offering.parishioner', parishioner);
-            this.focusValueInput();
         },
         addOffering: function() {
-            let offering = this.get('store').createRecord('offering', this.get('offering'));
-            offering.save();
-            this.resetChosen();
-            this.setDefaultOffering();
-            this.focusParishionerInput();
+            let newOffering = this.get('offering');
+            if (this.isOfferingValid(newOffering)) {
+                this.get('store').createRecord('offering', this.get('offering'));
+                this.resetChosen();
+                this.setDefaultOffering();
+                this.focusParishionerInput();
+                this.set('errorMessage', null);
+            }
+            else {
+                this.set('errorMessage', 'Offering is not complete and cannot be added.');
+            }
         }
     },
     setDefaultOffering: function() {
-        this.set('offering', { date: moment().format() });
+        this.set('offering', { date: moment() });
     },
     focusParishionerInput: function(){
         this.$('select').trigger('chosen:activate');    
@@ -42,5 +47,13 @@ export default Ember.Component.extend({
     resetChosen: function() {
         this.$('option:selected').removeAttr('selected');
         this.$('select').trigger('chosen:updated');
+    },
+    parishionersObserver: function() {
+            this.$('select').trigger('chosen:updated');
+        }.observes('parishioners').on('didUpdate'),
+    isOfferingValid: function(offering) {
+        return offering.parishioner != null
+            && offering.value != null
+            && offering.value > 0;
     }
 });

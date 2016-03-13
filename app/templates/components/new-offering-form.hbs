@@ -1,5 +1,9 @@
 <div class="well">
-    <p>Are you going to add a new offering?</p>
+    {{#if errorMessage }}
+        <div class="alert alert-danger">
+            {{errorMessage}}
+        </div>
+    {{/if}}
     <form style="margin-bottom: 15px;">
         <div><label>Parishioner</label></div>
         <fieldset style="margin-bottom: 15px;">
@@ -12,11 +16,11 @@
             </div>
             <div><label>Value</label></div>
             <div>
-                {{input value=offering.value class='form-control offering-value' id='offering-value'}}
+                {{input value=offering.value type='number' class='form-control offering-value' id='offering-value'}}
             </div>
             <div><label>Date</label></div>
             <div>
-                {{input value=offering.date class='form-control' id='offering-date'}}
+                {{input value=offering.date class='form-control' id='offering-date' readonly='readonly'}}
             </div>
         </fieldset>
         <div>
