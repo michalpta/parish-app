@@ -10,6 +10,18 @@
             <div>
                 {{input value=parishioner.name class='form-control'}}
             </div>
+            <div><label>City</label></div>
+            <div>
+                {{input value=parishioner.city class='form-control'}}
+            </div>
+            <div><label>Street</label></div>
+            <div>
+                {{input value=parishioner.street class='form-control'}}
+            </div>
+            <div><label>Number</label></div>
+            <div>
+                {{input value=parishioner.number type='number' class='form-control'}}
+            </div>
         </fieldset>
         <div>
             <button {{action 'addParishioner'}} class="btn btn-success form-control">Add</button>
