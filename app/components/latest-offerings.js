@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     sortParams: ['id:desc'],
-    sortedOfferings: Ember.computed.sort('model','sortParams'),
-    searchableOfferings: Ember.computed('sortedOfferings', 'quickSearch', function() {
-        let offerings = this.get('sortedOfferings');
+    sortedModel: Ember.computed.sort('model','sortParams'),
+    searchableOfferings: Ember.computed('sortedModel', 'quickSearch', function() {
+        let offerings = this.get('sortedModel');
         let filter = this.get('quickSearch');
         if (filter) {
             offerings = offerings.filter(function(offering) {
