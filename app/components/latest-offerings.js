@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    searchableOfferings: Ember.computed('model', 'quickSearch', function() {
-        let offerings = this.get('model');
+    sortParams: ['id:desc'],
+    sortedOfferings: Ember.computed.sort('model','sortParams'),
+    searchableOfferings: Ember.computed('sortedOfferings', 'quickSearch', function() {
+        let offerings = this.get('sortedOfferings');
         let filter = this.get('quickSearch');
         if (filter) {
             offerings = offerings.filter(function(offering) {
-                    return offering.get('parishioner.name').toLowerCase().indexOf(filter.toLowerCase()) != -1;
+                    return offering.get('parishioner.name').toLowerCase().indexOf(filter.toLowerCase()) !== -1;
                 });
         }
         return offerings;
@@ -15,7 +17,7 @@ export default Ember.Component.extend({
         let sum = 0;
         this.get('searchableOfferings').forEach(function(offering) {
             sum += Number(offering.get('value'));
-        })
-        return sum;
+        });
+        return sum.toFixed(2);
     })
 });

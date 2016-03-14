@@ -1,128 +1,13 @@
 export default function() {
 
-//   this.get('/parishioners', function() {
-//     return { data: [ 
-//         { 
-//             type: 'parishioner',
-//             id: 1,
-//             attributes: {
-//                 name: 'Ptaszek Katarzyna, Michal',
-//                 city: 'Krakow',
-//                 street: 'al. Pokoju',
-//                 streetNumber: '37'      
-//             }
-//         },
-//         { 
-//             type: 'parishioner',
-//             id: 2,
-//             attributes: {
-//                 name: 'Opiola Malgorzata, Piotr',
-//                 city: 'Krakow',
-//                 street: 'al. Pokoju',
-//                 streetNumber: '37'      
-//             }
-//         },
-//     ]};
-//   });
-  
-//   this.get('/offerings', function() {
-//     return { data: [ 
-//         { 
-//             type: 'offering',
-//             id: 1,
-//             attributes: {
-//                 value: 100,
-//                 date: '2016-03-10'
-//             },
-//             relationships: {
-//                 parishioner: { data: { id: 1, type: 'parishioner' } }
-//             }
-//         }
-//     ]};
-//   });
-  
-    this.get('/parishioners', function(db, request) {
-        return {
-            data: db.offerings.map(attrs => (
-                { type: 'parishioners', id: attrs.id, attributes: attrs.data.attributes, relationships: attrs.data.relationships }
-            ))
-        };
-    })
-    
-    this.get('/parishioners/:id', function(db, request) {
-        var parishioner = db.parishioners.find(request.params.id)
-        return {
-            data: {
-                id: parishioner.id,
-                type: 'parishioner',
-                attributes: parishioner.data.attributes
-            }
-        };
-    })
-    
-    this.post('/parishioners', function(db, request) {
-        var attrs = JSON.parse(request.requestBody);
-        var parishioner = db.parishioners.insert(attrs);
-        return {
-            data: {
-                id: parishioner.id,
-                type: 'parishioner',
-                attributes: parishioner.data.attributes
-            }
-        };
-    });
+    this.get('/parishioners')
+    this.get('/parishioners/:id')
+    this.post('/parishioners')
 
-    this.get('/offerings', function(db, request) {
-        return {
-            data: db.offerings.map(attrs => (
-                { type: 'offerings', id: attrs.id, attributes: attrs.data.attributes, relationships: attrs.data.relationships }
-            ))
-        };
-    })
-    
-    this.get('/offerings/:id', function(db, request) {
-        return {
-            data: db.offerings.find(request.params.id)
-        };
-    })
-    
-    this.post('/offerings', function(db, request) {
-        var attrs = JSON.parse(request.requestBody);
-        var offering = db.offerings.insert(attrs);
-        return {
-            data: {
-                id: offering.id,
-                type: 'offering',
-                attributes: offering.data.attributes
-            }
-        };
-    });
-  
-//   this.get('/parishioners/1', function() {
-//     return { data: {
-//         type: 'parishioner',
-//         id: 1,
-//         attributes: {
-//             name: 'Ptaszek Katarzyna, Michal',
-//             city: 'Krakow',
-//             street: 'al. Pokoju',
-//             streetNumber: '37'
-//         }      
-//     }};
-//   });
-//   this.get('/parishioners/2', function() {
-//     return { data: { 
-//         type: 'parishioner',
-//         id: 2,
-//         attributes: {
-//             name: 'Opiola Malgorzata, Piotr',
-//             city: 'Krakow',
-//             street: 'al. Pokoju',
-//             streetNumber: '37'      
-//         }
-//     }};
-//   });
-
+    this.get('/offerings')    
+    this.get('/offerings/:id')
+    this.post('/offerings')
+        
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

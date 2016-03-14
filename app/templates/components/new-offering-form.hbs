@@ -9,8 +9,8 @@
             <div><label>Parishioner</label></div>
             <div>
             <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder="Select parishioner..." class="form-control">
-                {{#each parishioners as |parishioner| }}
-                    <option value="{{parishioner.id}}">{{parishioner.name}}</option>
+                {{#each sortedParishioners as |parishioner| }}
+                    <option value="{{parishioner.id}}">{{parishioner.name}} - {{parishioner.city}}, {{parishioner.street}} {{parishioner.number}}</option>
                 {{/each}}
             </select>
             </div>

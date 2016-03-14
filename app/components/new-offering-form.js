@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {faker} from 'ember-cli-mirage';
 
 export default Ember.Component.extend({
     store: Ember.inject.service(),
@@ -12,19 +13,22 @@ export default Ember.Component.extend({
         this.$('select').chosen({ max_selected_options: 1 });
         this.focusParishionerInput();
     },
+    sortedParishioners: Ember.computed.sort('parishioners', 'sortProps'),
+    sortProps: ['name'],
     actions: {
         selectParishioner: function(id) {
             let parishioner = null;
-            if (id != 0) {   
-                parishioner = this.get('store').findRecord('parishioner', id)
-                this.focusValueInput();
+            if (id !== '') {   
+                parishioner = this.get('store').findRecord('parishioner', id);
+                this.focusValueInput();    
             }
             this.set('offering.parishioner', parishioner);
         },
         addOffering: function() {
             let newOffering = this.get('offering');
             if (this.isOfferingValid(newOffering)) {
-                this.get('store').createRecord('offering', newOffering);
+                let offering = this.get('store').createRecord('offering', newOffering);
+                offering.save();
                 this.resetChosen();
                 this.setDefaultOffering();
                 this.focusParishionerInput();
@@ -36,7 +40,7 @@ export default Ember.Component.extend({
         }
     },
     setDefaultOffering: function() {
-        this.set('offering', { date: moment(), value: 100 });
+        this.set('offering', { date: faker.date.past(), value: faker.finance.amount() });
     },
     focusParishionerInput: function(){
         this.$('select').trigger('chosen:activate');    
@@ -52,8 +56,8 @@ export default Ember.Component.extend({
             this.$('select').trigger('chosen:updated');
         }.observes('parishioners').on('didUpdate'),
     isOfferingValid: function(offering) {
-        return offering.parishioner != null
-            && offering.value != null
-            && offering.value > 0;
+        return offering.parishioner != null &&
+            offering.value != null &&
+            offering.value > 0;
     }
 });
