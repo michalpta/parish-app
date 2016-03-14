@@ -1,4 +1,12 @@
+<button {{action 'toggleShowNewParishionerForm'}} class="btn btn-default">Add new parishioner</button>
+
+{{#if isNewParishionerFormVisible}}
+<h3>New Parishioner</h3>
+{{new-parishioner-form}}
+{{/if}}
+
 <h3>Parishioners</h3>
+
 {{#each model as |parishioner|}}
     <div class="well">
     <p>PARISHIONER</p>

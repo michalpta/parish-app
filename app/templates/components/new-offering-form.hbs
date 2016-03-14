@@ -5,8 +5,8 @@
         </div>
     {{/if}}
     <form style="margin-bottom: 15px;">
-        <div><label>Parishioner</label></div>
         <fieldset style="margin-bottom: 15px;">
+            <div><label>Parishioner</label></div>
             <div>
             <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder="Select parishioner..." class="form-control">
                 {{#each parishioners as |parishioner| }}

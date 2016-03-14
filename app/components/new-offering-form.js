@@ -24,7 +24,7 @@ export default Ember.Component.extend({
         addOffering: function() {
             let newOffering = this.get('offering');
             if (this.isOfferingValid(newOffering)) {
-                this.get('store').createRecord('offering', this.get('offering'));
+                this.get('store').createRecord('offering', newOffering);
                 this.resetChosen();
                 this.setDefaultOffering();
                 this.focusParishionerInput();
@@ -36,7 +36,7 @@ export default Ember.Component.extend({
         }
     },
     setDefaultOffering: function() {
-        this.set('offering', { date: moment() });
+        this.set('offering', { date: moment(), value: 100 });
     },
     focusParishionerInput: function(){
         this.$('select').trigger('chosen:activate');    

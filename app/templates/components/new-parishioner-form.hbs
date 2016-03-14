@@ -1,0 +1,18 @@
+<div class="well">
+    {{#if errorMessage }}
+        <div class="alert alert-danger">
+            {{errorMessage}}
+        </div>
+    {{/if}}
+    <form style="margin-bottom: 15px;">
+        <fieldset style="margin-bottom: 15px;">
+            <div><label>Name</label></div>
+            <div>
+                {{input value=parishioner.name class='form-control'}}
+            </div>
+        </fieldset>
+        <div>
+            <button {{action 'addParishioner'}} class="btn btn-success form-control">Add</button>
+        </div>
+    </form>
+</div>

@@ -1,29 +1,29 @@
 export default function() {
 
-  this.get('/parishioners', function() {
-    return { data: [ 
-        { 
-            type: 'parishioner',
-            id: 1,
-            attributes: {
-                name: 'Ptaszek Katarzyna, Michal',
-                city: 'Krakow',
-                street: 'al. Pokoju',
-                streetNumber: '37'      
-            }
-        },
-        { 
-            type: 'parishioner',
-            id: 2,
-            attributes: {
-                name: 'Opiola Malgorzata, Piotr',
-                city: 'Krakow',
-                street: 'al. Pokoju',
-                streetNumber: '37'      
-            }
-        },
-    ]};
-  });
+//   this.get('/parishioners', function() {
+//     return { data: [ 
+//         { 
+//             type: 'parishioner',
+//             id: 1,
+//             attributes: {
+//                 name: 'Ptaszek Katarzyna, Michal',
+//                 city: 'Krakow',
+//                 street: 'al. Pokoju',
+//                 streetNumber: '37'      
+//             }
+//         },
+//         { 
+//             type: 'parishioner',
+//             id: 2,
+//             attributes: {
+//                 name: 'Opiola Malgorzata, Piotr',
+//                 city: 'Krakow',
+//                 street: 'al. Pokoju',
+//                 streetNumber: '37'      
+//             }
+//         },
+//     ]};
+//   });
   
 //   this.get('/offerings', function() {
 //     return { data: [ 
@@ -41,6 +41,37 @@ export default function() {
 //     ]};
 //   });
   
+    this.get('/parishioners', function(db, request) {
+        return {
+            data: db.offerings.map(attrs => (
+                { type: 'parishioners', id: attrs.id, attributes: attrs.data.attributes, relationships: attrs.data.relationships }
+            ))
+        };
+    })
+    
+    this.get('/parishioners/:id', function(db, request) {
+        var parishioner = db.parishioners.find(request.params.id)
+        return {
+            data: {
+                id: parishioner.id,
+                type: 'parishioner',
+                attributes: parishioner.data.attributes
+            }
+        };
+    })
+    
+    this.post('/parishioners', function(db, request) {
+        var attrs = JSON.parse(request.requestBody);
+        var parishioner = db.parishioners.insert(attrs);
+        return {
+            data: {
+                id: parishioner.id,
+                type: 'parishioner',
+                attributes: parishioner.data.attributes
+            }
+        };
+    });
+
     this.get('/offerings', function(db, request) {
         return {
             data: db.offerings.map(attrs => (
@@ -58,33 +89,39 @@ export default function() {
     this.post('/offerings', function(db, request) {
         var attrs = JSON.parse(request.requestBody);
         var offering = db.offerings.insert(attrs);
-        return offering;
+        return {
+            data: {
+                id: offering.id,
+                type: 'offering',
+                attributes: offering.data.attributes
+            }
+        };
     });
   
-  this.get('/parishioners/1', function() {
-    return { data: {
-        type: 'parishioner',
-        id: 1,
-        attributes: {
-            name: 'Ptaszek Katarzyna, Michal',
-            city: 'Krakow',
-            street: 'al. Pokoju',
-            streetNumber: '37'
-        }      
-    }};
-  });
-  this.get('/parishioners/2', function() {
-    return { data: { 
-        type: 'parishioner',
-        id: 2,
-        attributes: {
-            name: 'Opiola Malgorzata, Piotr',
-            city: 'Krakow',
-            street: 'al. Pokoju',
-            streetNumber: '37'      
-        }
-    }};
-  });
+//   this.get('/parishioners/1', function() {
+//     return { data: {
+//         type: 'parishioner',
+//         id: 1,
+//         attributes: {
+//             name: 'Ptaszek Katarzyna, Michal',
+//             city: 'Krakow',
+//             street: 'al. Pokoju',
+//             streetNumber: '37'
+//         }      
+//     }};
+//   });
+//   this.get('/parishioners/2', function() {
+//     return { data: { 
+//         type: 'parishioner',
+//         id: 2,
+//         attributes: {
+//             name: 'Opiola Malgorzata, Piotr',
+//             city: 'Krakow',
+//             street: 'al. Pokoju',
+//             streetNumber: '37'      
+//         }
+//     }};
+//   });
 
   // These comments are here to help you get started. Feel free to delete them.
 

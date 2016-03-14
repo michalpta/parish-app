@@ -14,7 +14,7 @@ export default Ember.Component.extend({
     sumOfOfferings: Ember.computed('searchableOfferings.@each', function() {
         let sum = 0;
         this.get('searchableOfferings').forEach(function(offering) {
-            sum += offering.get('value')*1;
+            sum += Number(offering.get('value'));
         })
         return sum;
     })
