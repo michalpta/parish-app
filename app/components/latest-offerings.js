@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  sortParams: ['id:desc'],
+  sortParams: ['date:desc'],
   sortedModel: Ember.computed.sort('model', 'sortParams'),
   searchableOfferings: Ember.computed('sortedModel', 'quickSearch', function() {
     let offerings = this.get('sortedModel');
