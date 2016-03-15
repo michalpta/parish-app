@@ -9,7 +9,7 @@ export default DS.Model.extend({
   streetNumberSuffix: DS.attr(),
   offerings: DS.hasMany('offering'),
 
-  address: Ember.computed('city', 'street', 'number', function() {
+  address: Ember.computed('city', 'street', 'streetNumber', function() {
     return `${this.get('city')}, ${this.get('street')} ${this.get('streetNumber')}`;
   })
 });
