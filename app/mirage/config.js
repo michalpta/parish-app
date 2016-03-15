@@ -1,13 +1,13 @@
 export default function() {
 
-    this.get('/parishioners');
-    this.get('/parishioners/:id');
-    this.post('/parishioners');
+  this.get('/parishioners');
+  this.get('/parishioners/:id');
+  this.post('/parishioners');
 
-    this.get('/offerings');   
-    this.get('/offerings/:id');
-    this.post('/offerings');
-        
+  this.get('/offerings');
+  this.get('/offerings/:id');
+  this.post('/offerings');
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

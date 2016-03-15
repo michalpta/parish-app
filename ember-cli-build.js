@@ -20,12 +20,12 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-    app.import('bower_components/moment/moment.js');
-    app.import('bower_components/datatables/media/js/jquery.dataTables.js');
-    
-    app.import('bower_components/chosen/chosen.jquery.js');
-    app.import('bower_components/chosen/chosen.css');
-    app.import('bower_components/chosen/chosen-sprite.png', { destDir: 'assets' });
+  app.import('bower_components/moment/moment.js');
+  app.import('bower_components/datatables/media/js/jquery.dataTables.js');
+
+  app.import('bower_components/chosen/chosen.jquery.js');
+  app.import('bower_components/chosen/chosen.css');
+  app.import('bower_components/chosen/chosen-sprite.png', { destDir: 'assets' });
 
   return app.toTree();
 };
