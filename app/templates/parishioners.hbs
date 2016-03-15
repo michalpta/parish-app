@@ -10,7 +10,7 @@
   </div>
 {{/unless}}
 
-<h3>Parishioners</h3>
+<h3>{{t 'parishioner.pluralName'}}</h3>
 <div class="margin-bottom">
   {{input value=quickSearch class='form-control' placeholder='Quick search through parishioners...'}}
 </div>
@@ -18,7 +18,7 @@
 {{#each searchableParishioners as |parishioner|}}
   <div class="well">
     <p>
-      PARISHIONER
+      <span class="uppercase">{{t 'parishioner.name'}}</span>
       <a {{action 'editParishioner' parishioner.id}} href="#" title="Edit parishioner">
         <span class="glyphicon glyphicon-pencil color-lighter"></span>
       </a>

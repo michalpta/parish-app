@@ -6,10 +6,10 @@
   <div class="well">
     <a {{action 'toggleIsFormVisible'}} class="pull-right" href="#" title="Close"><span class="glyphicon glyphicon-remove"></span></a>
 
-    <h3>New Offering</h3>
+    <h3>{{t 'offering.name'}}</h3>
     {{new-offering-form}}
   </div>
 {{/unless}}
 
-<h3>Latest Offerings</h3>
+<h3>{{t 'offering.pluralName'}}</h3>
 {{latest-offerings model=model}}

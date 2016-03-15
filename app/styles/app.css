@@ -4,3 +4,6 @@
 .margin-bottom {
   margin-bottom: 15px;
 }
+.uppercase {
+  text-transform: uppercase;
+}
