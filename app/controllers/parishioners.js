@@ -1,10 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  isNewParishionerFormVisible: false,
+  isFormVisible: false,
   actions: {
-    toggleShowNewParishionerForm: function() {
-      this.toggleProperty('isNewParishionerFormVisible');
+    toggleIsFormVisible: function() {
+      this.toggleProperty('isFormVisible');
+    },
+    createParishioner: function() {
+      this.set('editedParishioner', null);
+      this.set('isFormVisible', true);
+    },
+    editParishioner: function(id) {
+      let parishioner = this.get('model').findBy('id',id);
+      this.set('editedParishioner', parishioner);
+      this.set('isFormVisible', true);
+      $('html, body').animate({ scrollTop: 0 });
     }
   },
   sortParams: ['name'],

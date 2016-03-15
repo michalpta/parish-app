@@ -1,11 +1,14 @@
-<button {{action 'toggleShowNewParishionerForm'}} class="btn btn-default btn-sm">
+{{#unless isFormVisible}}
+  <button {{action 'createParishioner'}} class="btn btn-default btn-sm">
     <span class="glyphicon glyphicon-plus"></span> Add new parishioner
-</button>
-
-{{#if isNewParishionerFormVisible}}
-  <h3>New Parishioner</h3>
-  {{new-parishioner-form}}
-{{/if}}
+  </button>
+{{else}}
+  <div class="well">
+  <a {{action 'toggleIsFormVisible'}} class="pull-right" href="#" title="Close"><span class="glyphicon glyphicon-remove"></span></a>
+  <h3>Parishioner</h3>
+  {{parishioner-form model=editedParishioner}}
+  </div>
+{{/unless}}
 
 <h3>Parishioners</h3>
 <div class="margin-bottom">
@@ -14,7 +17,12 @@
 <div>
 {{#each searchableParishioners as |parishioner|}}
   <div class="well">
-    <p>PARISHIONER</p>
+    <p>
+      PARISHIONER
+      <a {{action 'editParishioner' parishioner.id}} href="#" title="Edit parishioner">
+        <span class="glyphicon glyphicon-pencil color-lighter"></span>
+      </a>
+    </p>
     <h3>Name: {{parishioner.name}}</h3>
     <p>Address: {{parishioner.address}}</p>
   </div>

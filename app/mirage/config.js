@@ -3,10 +3,12 @@ export default function() {
   this.get('/parishioners');
   this.get('/parishioners/:id');
   this.post('/parishioners');
+  this.put('/parishioners/:id');
 
   this.get('/offerings');
   this.get('/offerings/:id');
   this.post('/offerings');
+  this.put('/offerings/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 

@@ -1,0 +1,31 @@
+{{#if errorMessage }}
+  <div class="alert alert-danger">
+    {{errorMessage}}
+  </div>
+{{/if}}
+{{#if isNewRecord}}
+<div class="alert alert-warning">Parishioner not yet saved.</div>
+{{/if}}
+<form class="margin-bottom">
+  <fieldset class="margin-bottom">
+    <div><label>Name</label></div>
+    <div>
+      {{input value=model.name class='form-control'}}
+    </div>
+    <div><label>City</label></div>
+    <div>
+      {{input value=model.city class='form-control'}}
+    </div>
+    <div><label>Street</label></div>
+    <div>
+      {{input value=model.street class='form-control'}}
+    </div>
+    <div><label>Street Number</label></div>
+    <div>
+      {{input value=model.streetNumber type='number' class='form-control'}}
+    </div>
+  </fieldset>
+  <div>
+    <button {{action 'saveParishioner'}} class="btn btn-success form-control">Save</button>
+  </div>
+</form>
