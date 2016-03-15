@@ -1,30 +1,28 @@
-<div class="well">
-  {{#if errorMessage }}
-    <div class="alert alert-danger">
-      {{errorMessage}}
-    </div>
-  {{/if}}
-  <form class="margin-bottom">
-    <fieldset class="margin-bottom">
-      <div><label>Parishioner</label></div>
-      <div>
-      <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder="Select parishioner..." class="form-control">
-        {{#each sortedParishioners as |parishioner| }}
-          <option value="{{parishioner.id}}">{{parishioner.name}} - {{parishioner.city}}, {{parishioner.street}} {{parishioner.number}}</option>
-        {{/each}}
-      </select>
-      </div>
-      <div><label>Value</label></div>
-      <div>
-        {{input value=offering.value type='number' class='form-control offering-value' id='offering-value'}}
-      </div>
-      <div><label>Date</label></div>
-      <div>
-        {{input value=offering.date class='form-control' id='offering-date' readonly='readonly'}}
-      </div>
-    </fieldset>
+{{#if errorMessage }}
+  <div class="alert alert-danger">
+    {{errorMessage}}
+  </div>
+{{/if}}
+<form class="margin-bottom">
+  <fieldset class="margin-bottom">
+    <div><label>Parishioner</label></div>
     <div>
-      <button {{action 'addOffering'}} class="btn btn-success form-control">Add</button>
+    <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder="Select parishioner..." class="form-control">
+      {{#each sortedParishioners as |parishioner| }}
+        <option value="{{parishioner.id}}">{{parishioner.name}} - {{parishioner.city}}, {{parishioner.street}} {{parishioner.number}}</option>
+      {{/each}}
+    </select>
     </div>
-  </form>
-</div>
+    <div><label>Value</label></div>
+    <div>
+      {{input value=offering.value type='number' class='form-control offering-value' id='offering-value'}}
+    </div>
+    <div><label>Date</label></div>
+    <div>
+      {{input value=offering.date class='form-control' id='offering-date' readonly='readonly'}}
+    </div>
+  </fieldset>
+  <div>
+    <button {{action 'addOffering'}} class="btn btn-success form-control">Add</button>
+  </div>
+</form>

@@ -1,11 +1,15 @@
-<button {{action 'toggleShowNewOfferingForm'}} class="btn btn-default btn-sm">
-  <span class="glyphicon glyphicon-plus"></span> Add new offering
-</button>
+{{#unless isFormVisible}}
+  <button {{action 'toggleIsFormVisible'}} class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-plus"></span> Add new offering
+  </button>
+{{else}}
+  <div class="well">
+    <a {{action 'toggleIsFormVisible'}} class="pull-right" href="#" title="Close"><span class="glyphicon glyphicon-remove"></span></a>
 
-{{#if isNewOfferingFormVisible}}
-  <h3>New Offering</h3>
-  {{new-offering-form}}
-{{/if}}
+    <h3>New Offering</h3>
+    {{new-offering-form}}
+  </div>
+{{/unless}}
 
 <h3>Latest Offerings</h3>
 {{latest-offerings model=model}}
