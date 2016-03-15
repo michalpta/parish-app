@@ -1,25 +1,25 @@
 {{input value=quickSearch class='form-control' placeholder='Quick search through offerings...'}}
 <div class="text-right"><label>Total</label> {{ sumOfOfferings }}</div>
 <table class="table">
-    <thead>
+  <thead>
     <tr>
-        <th>Value</th><th>Date</th><th>Parishioner</th>
+      <th>Value</th><th>Date</th><th>Parishioner</th>
     </tr>
-    </thead>
-    <tbody>
-    {{#each searchableOfferings as |offering|}}
+  </thead>
+  <tbody>
+  {{#each searchableOfferings as |offering|}}
     <tr>
-        <td>{{offering.value}}</td>
-        <td>{{offering.date}}</td>
-        <td>
-            {{offering.parishioner.name}}<br />
-            <span class="color-lighter small">{{offering.parishioner.address}}</span>            
-        </td>
+      <td>{{offering.value}}</td>
+      <td>{{offering.date}}</td>
+      <td>
+        {{offering.parishioner.name}}<br />
+        <span class="color-lighter small">{{offering.parishioner.address}}</span>
+      </td>
     </tr>
-    {{else}}
+  {{else}}
     <tr>
-        <td colspan="3">No offerings found.</td>
+      <td colspan="3">No offerings found.</td>
     </tr>
-    {{/each}}
-    </tbody>
+  {{/each}}
+  </tbody>
 </table>

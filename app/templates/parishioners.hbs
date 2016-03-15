@@ -3,20 +3,20 @@
 </button>
 
 {{#if isNewParishionerFormVisible}}
-<h3>New Parishioner</h3>
-{{new-parishioner-form}}
+  <h3>New Parishioner</h3>
+  {{new-parishioner-form}}
 {{/if}}
 
 <h3>Parishioners</h3>
 <div style="margin-bottom: 15px;">
-    {{input value=quickSearch class='form-control' placeholder='Quick search through parishioners...'}}
+  {{input value=quickSearch class='form-control' placeholder='Quick search through parishioners...'}}
 </div>
 <div>
 {{#each searchableParishioners as |parishioner|}}
-    <div class="well">
+  <div class="well">
     <p>PARISHIONER</p>
     <h3>Name: {{parishioner.name}}</h3>
     <p>Address: {{parishioner.address}}</p>
-    </div>
+  </div>
 {{/each}}
 </div>
