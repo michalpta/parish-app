@@ -40,7 +40,7 @@ export default Ember.Component.extend({
     }
   },
   setDefaultOffering: function() {
-    this.set('offering', { date: faker.date.past(), value: faker.finance.amount() });
+    this.set('offering', { date: moment(faker.date.past()).format('YYYY-MM-DD HH:mm'), value: faker.finance.amount() });
   },
   focusParishionerInput: function() {
     this.$('select').trigger('chosen:activate');
