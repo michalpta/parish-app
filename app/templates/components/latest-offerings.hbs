@@ -1,27 +1,30 @@
-{{input value=quickSearch class='form-control' placeholder=(t 'app.labels.searchPlaceholder')}}
-<div class="text-right"><label>{{t 'app.labels.total'}}</label> {{ sumOfOfferings }}</div>
-<table class="table">
-  <thead>
-    <tr>
-      <th>{{t 'offering.attributes.value'}}</th>
-      <th>{{t 'offering.attributes.date'}}</th>
-      <th>{{t 'parishioner.name'}}</th>
-    </tr>
-  </thead>
-  <tbody>
-  {{#each searchableOfferings as |offering|}}
-    <tr>
-      <td>{{offering.value}}</td>
-      <td>{{offering.date}}</td>
-      <td>
-        {{offering.parishioner.name}}<br />
-        <span class="color-lighter small">{{offering.parishioner.address}}</span>
-      </td>
-    </tr>
-  {{else}}
-    <tr>
-      <td colspan="3">{{t 'app.alerts.noRecordsFound'}}</td>
-    </tr>
-  {{/each}}
-  </tbody>
-</table>
+{{input value=quickSearch class='form-control margin-bottom' placeholder=(t 'app.labels.searchPlaceholder')}}
+<div><label>{{t 'app.labels.total'}}</label> {{ sumOfOfferings }}</div>
+<div class="col-md-8 no-padding">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{t 'offering.attributes.value'}}</th>
+        <th>{{t 'parishioner.name'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each searchableOfferings as |offering|}}
+      <tr>
+        <td>
+          <big><b>{{offering.value}}</b></big><br />
+          <span class="small">{{offering.date}}</span>
+        </td>
+        <td>
+          {{offering.parishioner.name}}<br />
+          <span class="color-lighter small">{{offering.parishioner.address}}</span>
+        </td>
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="2">{{t 'app.alerts.noRecordsFound'}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

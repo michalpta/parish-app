@@ -7,3 +7,6 @@
 .uppercase {
   text-transform: uppercase;
 }
+.no-padding {
+  padding: 0 !important;
+}
