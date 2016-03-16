@@ -1,18 +1,18 @@
 {{input value=quickSearch class='form-control margin-bottom' placeholder=(t 'app.labels.searchPlaceholder')}}
-<div><label>{{t 'app.labels.total'}}</label> {{ sumOfOfferings }}</div>
+<div><label>{{t 'app.labels.total'}}</label> {{numberToLocaleString sumOfOfferings}}</div>
 <div class="col-md-8 no-padding">
   <table class="table">
     <thead>
       <tr>
-        <th>{{t 'offering.attributes.value'}}</th>
+        <th style="width: 150px;">{{t 'offering.attributes.value'}}</th>
         <th>{{t 'parishioner.name'}}</th>
       </tr>
     </thead>
     <tbody>
     {{#each searchableOfferings as |offering|}}
       <tr>
-        <td>
-          <big><b>{{offering.value}}</b></big><br />
+        <td class="text-right">
+          <big><b>{{numberToLocaleString offering.value}}</b></big><br />
           <span class="small">{{offering.date}}</span>
         </td>
         <td>

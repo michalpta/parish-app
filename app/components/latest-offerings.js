@@ -20,6 +20,6 @@ export default Ember.Component.extend({
     this.get('searchableOfferings').forEach(function(offering) {
       sum += Number(offering.get('value'));
     });
-    return sum.toFixed(2);
+    return sum;
   })
 });
