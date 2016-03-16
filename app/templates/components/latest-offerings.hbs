@@ -1,9 +1,11 @@
-{{input value=quickSearch class='form-control' placeholder='Quick search through offerings...'}}
-<div class="text-right"><label>Total</label> {{ sumOfOfferings }}</div>
+{{input value=quickSearch class='form-control' placeholder=(t 'app.labels.searchPlaceholder')}}
+<div class="text-right"><label>{{t 'app.labels.total'}}</label> {{ sumOfOfferings }}</div>
 <table class="table">
   <thead>
     <tr>
-      <th>Value</th><th>Date</th><th>Parishioner</th>
+      <th>{{t 'offering.attributes.value'}}</th>
+      <th>{{t 'offering.attributes.date'}}</th>
+      <th>{{t 'parishioner.name'}}</th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +20,7 @@
     </tr>
   {{else}}
     <tr>
-      <td colspan="3">No offerings found.</td>
+      <td colspan="3">{{t 'app.alerts.noRecordsFound'}}</td>
     </tr>
   {{/each}}
   </tbody>

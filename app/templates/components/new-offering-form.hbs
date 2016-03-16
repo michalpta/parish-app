@@ -1,11 +1,11 @@
 {{#if errorMessage }}
   <div class="alert alert-danger">
-    {{errorMessage}}
+    {{t 'app.alerts.recordCannotBeSaved'}}
   </div>
 {{/if}}
 <form class="margin-bottom">
   <fieldset class="margin-bottom">
-    <div><label>Parishioner</label></div>
+    <div><label>{{t 'parishioner.name'}}</label></div>
     <div>
     <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder="Select parishioner..." class="form-control">
       {{#each sortedParishioners as |parishioner| }}
@@ -13,16 +13,16 @@
       {{/each}}
     </select>
     </div>
-    <div><label>Value</label></div>
+    <div><label>{{t 'offering.attributes.value'}}</label></div>
     <div>
       {{input value=offering.value type='number' class='form-control offering-value' id='offering-value'}}
     </div>
-    <div><label>Date</label></div>
+    <div><label>{{t 'offering.attributes.date'}}</label></div>
     <div>
       {{input value=offering.date class='form-control' id='offering-date' readonly='readonly'}}
     </div>
   </fieldset>
   <div>
-    <button {{action 'addOffering'}} class="btn btn-success form-control">Add</button>
+    <button {{action 'addOffering'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
   </div>
 </form>
