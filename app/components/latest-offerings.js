@@ -9,7 +9,8 @@ export default Ember.Component.extend({
     if (filter) {
       offerings = offerings.filter(function(offering) {
         return offering.get('parishioner.name').toLowerCase().indexOf(filter.toLowerCase()) !== -1 ||
-          offering.get('parishioner.address').toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+          offering.get('parishioner.address').toLowerCase().indexOf(filter.toLowerCase()) !== -1 ||
+          offering.get('date').toLowerCase().indexOf(filter.toLowerCase()) !== -1;
       });
     }
     return offerings;
