@@ -6,6 +6,7 @@
       <tr>
         <th style="width: 150px;">{{t 'offering.attributes.value'}}</th>
         <th>{{t 'parishioner.name'}}</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,10 +20,15 @@
           {{offering.parishioner.name}}<br />
           <span class="color-lighter small">{{offering.parishioner.address}}</span>
         </td>
+        <td>
+          <a {{action 'editOffering' offering.id}} href="#" title="{{t 'app.actions.edit'}}">
+            <span class="glyphicon glyphicon-pencil color-lighter"></span>
+          </a>
+        </td>
       </tr>
     {{else}}
       <tr>
-        <td colspan="2">{{t 'app.alerts.noRecordsFound'}}</td>
+        <td colspan="3">{{t 'app.alerts.noRecordsFound'}}</td>
       </tr>
     {{/each}}
     </tbody>

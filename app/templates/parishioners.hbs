@@ -4,9 +4,9 @@
   </button>
 {{else}}
   <div class="well">
-  <a {{action 'toggleIsFormVisible'}} class="pull-right" href="#" title="{{t 'app.actions.close'}}"><span class="glyphicon glyphicon-remove"></span></a>
-  <h3>{{t 'parishioner.name'}}</h3>
-  {{parishioner-form model=editedParishioner}}
+    <a {{action 'toggleIsFormVisible'}} class="pull-right" href="#" title="{{t 'app.actions.close'}}"><span class="glyphicon glyphicon-remove"></span></a>
+    <h3>{{t 'parishioner.name'}}</h3>
+    {{parishioner-form model=editedParishioner}}
   </div>
 {{/unless}}
 

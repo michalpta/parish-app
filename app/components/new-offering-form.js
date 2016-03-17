@@ -7,11 +7,11 @@ export default Ember.Component.extend({
     this._super(arguments);
     let parishioners = this.get('store').findAll('parishioner');
     this.set('parishioners', parishioners);
-    this.setDefaultOffering();
+    if (this.get('model') === null)
+      this.setDefaultOffering();
   },
   didInsertElement: function() {
-    this.$('select').chosen({ max_selected_options: 1 });
-    this.focusParishionerInput();
+    this.initChosen();
   },
   sortedParishioners: Ember.computed.sort('parishioners', 'sortProps'),
   sortProps: ['name'],
@@ -22,12 +22,15 @@ export default Ember.Component.extend({
         parishioner = this.get('store').findRecord('parishioner', id);
         this.focusValueInput();
       }
-      this.set('offering.parishioner', parishioner);
+      this.set('model.parishioner', parishioner);
     },
-    addOffering: function() {
-      let newOffering = this.get('offering');
-      if (this.isOfferingValid(newOffering)) {
-        let offering = this.get('store').createRecord('offering', newOffering);
+    saveOffering: function() {
+      let offering = this.get('model');
+      if (this.isOfferingValid(offering)) {
+        if (this.get('isNewRecord')) {
+          offering = this.get('store').createRecord('offering', offering);
+          this.set('model', offering);
+        }
         offering.save();
         this.resetChosen();
         this.setDefaultOffering();
@@ -39,14 +42,25 @@ export default Ember.Component.extend({
       }
     }
   },
+  isNewRecord: Ember.computed('model', function() {
+    let model = this.get('model');
+    return model.get === undefined;
+  }),
   setDefaultOffering: function() {
-    this.set('offering', { date: moment(faker.date.past()).format('YYYY-MM-DD HH:mm'), value: faker.finance.amount() });
+    let offering = {
+      date: moment(faker.date.past()).format('YYYY-MM-DD HH:mm'),
+      value: faker.finance.amount()
+    }
+    this.set('model', offering);
   },
   focusParishionerInput: function() {
     this.$('select').trigger('chosen:activate');
   },
   focusValueInput: function() {
     this.$('#offering-value').focus();
+  },
+  initChosen: function() {
+    this.$('select').chosen({ max_selected_options: 1 });
   },
   resetChosen: function() {
     this.$('option:selected').removeAttr('selected');
