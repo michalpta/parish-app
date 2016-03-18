@@ -5,9 +5,8 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   init: function() {
     this._super(arguments);
-    let that = this;
     this.get('store').findAll('parishioner').
-      then((parishioners) => { that.set('parishioners', parishioners); });
+      then((parishioners) => { this.set('parishioners', parishioners); });
     if (this.get('model') === null)
       this.setDefaultOffering();
   },
@@ -18,10 +17,9 @@ export default Ember.Component.extend({
   sortProps: ['name'],
   actions: {
     selectParishioner: function(id) {
-      let that = this;
       if (id !== '') {
         this.get('store').findRecord('parishioner', id).
-          then((parishioner) => { that.set('model.parishioner', parishioner); });
+          then((parishioner) => { this.set('model.parishioner', parishioner); });
         this.focusValueInput();
       }
       else {
