@@ -6,9 +6,9 @@
   <div class="well">
     <a {{action 'toggleIsFormVisible'}} class="pull-right" href="#" title="{{t 'app.actions.close'}}"><span class="glyphicon glyphicon-remove"></span></a>
     <h3>{{t 'offering.name'}}</h3>
-    {{offering-form model=editedOffering}}
+    {{offering-form model=editedOffering parishioners=model.parishioners}}
   </div>
 {{/unless}}
 
 <h3>{{t 'offering.pluralName'}}</h3>
-{{latest-offerings model=model editOfferingActionHandler=(action 'editOffering')}}
+{{latest-offerings model=model.offerings editOfferingActionHandler=(action 'editOffering')}}

@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    return this.store.findAll('offering');
+    return {
+      offerings: this.store.findAll('offering'),
+      parishioners: this.store.findAll('parishioner')
+    }
   }
 });

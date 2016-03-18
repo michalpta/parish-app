@@ -6,22 +6,21 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   init: function() {
     this._super(arguments);
-    this.get('store').findAll('parishioner').
-      then((parishioners) => { this.set('parishioners', parishioners); });
     if (this.get('model') === null) {
       this.setDefaultOffering();
     }
   },
   didInsertElement: function() {
     this.initChosen();
+    this.updateChosen();
   },
   sortedParishioners: Ember.computed.sort('parishioners', 'sortProps'),
   sortProps: ['name'],
   actions: {
     selectParishioner(id) {
       if (id !== '') {
-        this.get('store').findRecord('parishioner', id).
-          then((parishioner) => { this.set('model.parishioner', parishioner); });
+        let parishioner = this.get('parishioners').findBy('id', id);
+        this.set('model.parishioner', parishioner);
         this.focusValueInput();
       }
       else {
@@ -32,8 +31,6 @@ export default Ember.Component.extend({
       let offering = this.get('model');
       if (this.get('isNewRecord')) {
         offering = this.get('store').createRecord('offering', offering);
-        this.set('model', offering);
-        this.resetChosen();
         this.setDefaultOffering();
         this.focusParishionerInput();
       }
@@ -43,8 +40,7 @@ export default Ember.Component.extend({
       if (!this.get('isNewRecord')) {
         let offering = this.get('model');
         offering.destroyRecord();
-        this.set('model',{});
-        this.resetChosen();
+        this.set('model', {});
       }
     }
   },
@@ -69,14 +65,11 @@ export default Ember.Component.extend({
   initChosen: function() {
     this.$('select').chosen({ max_selected_options: 1 });
   },
-  resetChosen: function() {
-    this.$('option:selected').removeAttr('selected');
+  updateChosen: function() {
+    this.$('select').val(this.get('model.parishioner.id'));
     this.$('select').trigger('chosen:updated');
   },
-  parishionersObserver: function() {
-    if (!this.get('isNewRecord')) {
-      this.$('select').val(this.get('model.parishioner.id'));
-    }
-    this.$('select').trigger('chosen:updated');
-  }.observes('parishioners').on('didUpdate'),
+  chosenUpdater: function() {
+    this.updateChosen();
+  }.observes('model')
 });

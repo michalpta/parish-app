@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
       this.set('isFormVisible', true);
     },
     editOffering: function(id) {
-      let offering = this.get('model').findBy('id',id);
+      let offering = this.get('model.offerings').findBy('id',id);
       this.set('editedOffering', offering);
       this.set('isFormVisible', true);
       $('html, body').animate({ scrollTop: 0 });
