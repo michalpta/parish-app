@@ -3,6 +3,9 @@
     {{t 'app.alerts.recordCannotBeSaved'}}
   </div>
 {{/if}}
+{{#if isNewRecord}}
+  <div class="alert alert-warning">{{t 'app.alerts.recordNotSaved'}}</div>
+{{/if}}
 <form class="margin-bottom">
   <fieldset class="margin-bottom">
     <div><label>{{t 'parishioner.name'}}</label></div>
@@ -15,14 +18,14 @@
     </div>
     <div><label>{{t 'offering.attributes.value'}}</label></div>
     <div>
-      {{input value=offering.value type='number' class='form-control offering-value' id='offering-value'}}
+      {{input value=model.value type='number' class='form-control offering-value' id='offering-value'}}
     </div>
     <div><label>{{t 'offering.attributes.date'}}</label></div>
     <div>
-      {{input value=offering.date class='form-control' id='offering-date'}}
+      {{input value=model.date class='form-control' id='offering-date'}}
     </div>
   </fieldset>
   <div>
-    <button {{action 'addOffering'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
+    <button {{action 'saveOffering'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
   </div>
 </form>

@@ -6,12 +6,16 @@
       <tr>
         <th style="width: 150px;">{{t 'offering.attributes.value'}}</th>
         <th>{{t 'parishioner.name'}}</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
     {{#each searchableOfferings as |offering|}}
       <tr>
         <td class="text-right">
+          <a {{action 'editOffering' offering.id}} class="pull-left" href="#" title="{{t 'app.actions.edit'}}">
+            <span class="glyphicon glyphicon-pencil color-lighter"></span>
+          </a>
           <big><b>{{numberToLocaleString offering.value}}</b></big><br />
           <span class="small">{{offering.date}}</span>
         </td>

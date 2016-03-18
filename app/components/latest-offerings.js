@@ -21,5 +21,10 @@ export default Ember.Component.extend({
       sum += Number(offering.get('value'));
     });
     return sum;
-  })
+  }),
+  actions: {
+    editOffering: function(id) {
+      this.editOfferingActionHandler(id);
+    }
+  }
 });
