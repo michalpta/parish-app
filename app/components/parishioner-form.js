@@ -10,13 +10,20 @@ export default Ember.Component.extend({
     }
   },
   actions: {
-    saveParishioner: function() {
+    save() {
       let parishioner = this.get('model');
       if (this.get('isNewRecord')) {
         parishioner = this.get('store').createRecord('parishioner', parishioner);
         this.set('model', parishioner);
       }
       parishioner.save();
+    },
+    delete() {
+      if (!this.get('isNewRecord')) {
+        let parishioner = this.get('model');
+        parishioner.destroyRecord();
+        this.set('model',{});
+      }
     }
   },
   isNewRecord: Ember.computed('model', function() {

@@ -18,7 +18,7 @@ export default Ember.Component.extend({
   sortedParishioners: Ember.computed.sort('parishioners', 'sortProps'),
   sortProps: ['name'],
   actions: {
-    selectParishioner: function(id) {
+    selectParishioner(id) {
       if (id !== '') {
         this.get('store').findRecord('parishioner', id).
           then((parishioner) => { this.set('model.parishioner', parishioner); });
@@ -28,7 +28,7 @@ export default Ember.Component.extend({
         this.set('model.parishioner', null);
       }
     },
-    saveOffering: function() {
+    save() {
       let offering = this.get('model');
       if (this.get('isNewRecord')) {
         offering = this.get('store').createRecord('offering', offering);
@@ -38,6 +38,14 @@ export default Ember.Component.extend({
         this.focusParishionerInput();
       }
       offering.save();
+    },
+    delete() {
+      if (!this.get('isNewRecord')) {
+        let offering = this.get('model');
+        offering.destroyRecord();
+        this.set('model',{});
+        this.resetChosen();
+      }
     }
   },
   isNewRecord: Ember.computed('model', function() {

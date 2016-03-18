@@ -14,7 +14,8 @@ export default {
   'app.actions': {
     'save': 'Zapisz',
     'close': 'Zamknij',
-    'edit': 'Edytuj'
+    'edit': 'Edytuj',
+    'delete': 'Usuń'
   },
   'app.alerts': {
     'recordNotSaved': 'Ten rekord nie jest jeszcze zapisany.',

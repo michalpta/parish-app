@@ -14,7 +14,8 @@ export default {
   'app.actions': {
     'save': 'Save',
     'close': 'Close',
-    'edit': 'Edit'
+    'edit': 'Edit',
+    'delete': 'Delete'
   },
   'app.alerts': {
     'recordNotSaved': 'This record is not saved yet.',

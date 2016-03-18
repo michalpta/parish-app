@@ -26,6 +26,9 @@
     </div>
   </fieldset>
   <div>
-    <button {{action 'saveParishioner'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
+    <button {{action 'save'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
+    {{#unless isNewRecord}}
+      <a {{action 'delete'}} href="#" class="pull-right">{{t 'app.actions.delete'}}</a>
+    {{/unless}}
   </div>
 </form>
