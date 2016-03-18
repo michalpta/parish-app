@@ -6,9 +6,8 @@ export default Ember.Component.extend({
   init: function() {
     this._super(arguments);
     let that = this;
-    this.get('store').findAll('parishioner').then(function(parishioners) {
-        that.set('parishioners', parishioners);
-      });
+    this.get('store').findAll('parishioner').
+      then((parishioners) => { that.set('parishioners', parishioners); });
     if (this.get('model') === null)
       this.setDefaultOffering();
   },
@@ -22,9 +21,7 @@ export default Ember.Component.extend({
       let that = this;
       if (id !== '') {
         this.get('store').findRecord('parishioner', id).
-          then(function(parishioner) {
-            that.set('model.parishioner', parishioner);
-          });
+          then((parishioner) => { that.set('model.parishioner', parishioner); });
         this.focusValueInput();
       }
       else {
