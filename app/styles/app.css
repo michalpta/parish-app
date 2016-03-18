@@ -10,3 +10,7 @@
 .no-padding {
   padding: 0 !important;
 }
+
+.btn, .alert, .well, .form-control {
+  border-radius: 0 !important;
+}

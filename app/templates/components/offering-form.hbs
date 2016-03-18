@@ -10,7 +10,7 @@
   <fieldset class="margin-bottom">
     <div><label>{{t 'parishioner.name'}}</label></div>
     <div>
-    <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder="Select parishioner..." class="form-control">
+    <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder={{t 'app.labels.searchPlaceholder'}} class="form-control">
       {{#each sortedParishioners as |parishioner| }}
         <option value="{{parishioner.id}}">{{parishioner.name}} - {{parishioner.address}}</option>
       {{/each}}
