@@ -13,6 +13,9 @@
     {{#each searchableOfferings as |offering|}}
       <tr>
         <td class="text-right">
+          <a {{action 'editOffering' offering.id}} class="pull-left" href="#" title="{{t 'app.actions.edit'}}">
+            <span class="glyphicon glyphicon-pencil color-lighter"></span>
+          </a>
           <big><b>{{numberToLocaleString offering.value}}</b></big><br />
           <span class="small">{{offering.date}}</span>
         </td>
@@ -20,15 +23,10 @@
           {{offering.parishioner.name}}<br />
           <span class="color-lighter small">{{offering.parishioner.address}}</span>
         </td>
-        <td>
-          <a {{action 'editOffering' offering.id}} href="#" title="{{t 'app.actions.edit'}}">
-            <span class="glyphicon glyphicon-pencil color-lighter"></span>
-          </a>
-        </td>
       </tr>
     {{else}}
       <tr>
-        <td colspan="3">{{t 'app.alerts.noRecordsFound'}}</td>
+        <td colspan="2">{{t 'app.alerts.noRecordsFound'}}</td>
       </tr>
     {{/each}}
     </tbody>

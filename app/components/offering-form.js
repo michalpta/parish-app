@@ -5,8 +5,10 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   init: function() {
     this._super(arguments);
-    let parishioners = this.get('store').findAll('parishioner');
-    this.set('parishioners', parishioners);
+    let that = this;
+    this.get('store').findAll('parishioner').then(function(parishioners) {
+        that.set('parishioners', parishioners);
+      });
     if (this.get('model') === null)
       this.setDefaultOffering();
   },
@@ -17,29 +19,28 @@ export default Ember.Component.extend({
   sortProps: ['name'],
   actions: {
     selectParishioner: function(id) {
-      let parishioner = null;
+      let that = this;
       if (id !== '') {
-        parishioner = this.get('store').findRecord('parishioner', id);
+        this.get('store').findRecord('parishioner', id).
+          then(function(parishioner) {
+            that.set('model.parishioner', parishioner);
+          });
         this.focusValueInput();
       }
-      this.set('model.parishioner', parishioner);
+      else {
+        this.set('model.parishioner', null);
+      }
     },
     saveOffering: function() {
       let offering = this.get('model');
-      if (this.isOfferingValid(offering)) {
-        if (this.get('isNewRecord')) {
-          offering = this.get('store').createRecord('offering', offering);
-          this.set('model', offering);
-        }
-        offering.save();
+      if (this.get('isNewRecord')) {
+        offering = this.get('store').createRecord('offering', offering);
+        this.set('model', offering);
         this.resetChosen();
         this.setDefaultOffering();
         this.focusParishionerInput();
-        this.set('errorMessage', null);
       }
-      else {
-        this.set('errorMessage', 'Offering is not complete and cannot be added.');
-      }
+      offering.save();
     }
   },
   isNewRecord: Ember.computed('model', function() {
@@ -58,6 +59,7 @@ export default Ember.Component.extend({
   },
   focusValueInput: function() {
     this.$('#offering-value').focus();
+    this.$('#offering-value').select();
   },
   initChosen: function() {
     this.$('select').chosen({ max_selected_options: 1 });
@@ -67,11 +69,9 @@ export default Ember.Component.extend({
     this.$('select').trigger('chosen:updated');
   },
   parishionersObserver: function() {
+    if (!this.get('isNewRecord')) {
+      this.$('select').val(this.get('model.parishioner.id'));
+    }
     this.$('select').trigger('chosen:updated');
   }.observes('parishioners').on('didUpdate'),
-  isOfferingValid: function(offering) {
-    return offering.parishioner != null &&
-      offering.value != null &&
-      offering.value > 0;
-  }
 });
