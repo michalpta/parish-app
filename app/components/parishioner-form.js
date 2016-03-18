@@ -5,8 +5,9 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   init: function() {
     this._super(arguments);
-    if (this.get('model') === null)
+    if (this.get('model') === null) {
       this.setDefaultParishioner();
+    }
   },
   actions: {
     saveParishioner: function() {

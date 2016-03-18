@@ -17,7 +17,7 @@ test('it renders', function(assert) {
   this.render(hbs`
     {{#offering-form}}
       template block text
-    {{/new-offering-form}}
+    {{/offering-form}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');

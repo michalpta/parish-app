@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import {faker} from 'ember-cli-mirage';
+import moment from 'moment';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
@@ -7,8 +8,9 @@ export default Ember.Component.extend({
     this._super(arguments);
     this.get('store').findAll('parishioner').
       then((parishioners) => { this.set('parishioners', parishioners); });
-    if (this.get('model') === null)
+    if (this.get('model') === null) {
       this.setDefaultOffering();
+    }
   },
   didInsertElement: function() {
     this.initChosen();
@@ -46,7 +48,7 @@ export default Ember.Component.extend({
     let offering = {
       date: moment(faker.date.past()).format('YYYY-MM-DD HH:mm'),
       value: faker.finance.amount()
-    }
+    };
     this.set('model', offering);
   },
   focusParishionerInput: function() {
