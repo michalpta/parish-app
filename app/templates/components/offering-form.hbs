@@ -36,8 +36,8 @@
 
 {{#if deleteConfirmationNeeded}}
   {{#ember-wormhole to='modal-hole'}}
-    {{#modal-window title='Are you sure?' yesHandler=(action 'delete') noHandler=(action 'cancelDelete')}}
-      Are you sure you want to delete this offering?
+    {{#modal-window title=(t 'app.alerts.areYouSure') yesHandler=(action 'delete') noHandler=(action 'cancelDelete')}}
+      {{t 'app.alerts.areYouSureYouWantToDelete'}}
     {{/modal-window}}
   {{/ember-wormhole}}
 {{/if}}

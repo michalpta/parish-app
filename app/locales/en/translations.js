@@ -15,12 +15,16 @@ export default {
     'save': 'Save',
     'close': 'Close',
     'edit': 'Edit',
-    'delete': 'Delete'
+    'delete': 'Delete',
+    'yes': 'Yes',
+    'no': 'No'
   },
   'app.alerts': {
     'recordNotSaved': 'This record is not saved yet.',
     'recordCannotBeSaved': 'This record cannot be saved.',
-    'noRecordsFound': 'No records found.'
+    'noRecordsFound': 'No records found.',
+    'areYouSure': 'Are you sure?',
+    'areYouSureYouWantToDelete': 'Are you sure you want to delete this record? This operation cannot be undone.'
   },
   'app.labels': {
     'total': 'Total',

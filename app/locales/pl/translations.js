@@ -15,12 +15,16 @@ export default {
     'save': 'Zapisz',
     'close': 'Zamknij',
     'edit': 'Edytuj',
-    'delete': 'Usuń'
+    'delete': 'Usuń',
+    'yes': 'Tak',
+    'no': 'Nie'
   },
   'app.alerts': {
     'recordNotSaved': 'Ten rekord nie jest jeszcze zapisany.',
     'recordCannotBeSaved': 'Tego rekordu nie można zapisać.',
-    'noRecordsFound': 'Nie znaleziono żadnych rekordów.'
+    'noRecordsFound': 'Nie znaleziono żadnych rekordów.',
+    'areYouSure': 'Czy jesteś pewien?',
+    'areYouSureYouWantToDelete': 'Czy jesteś pewien, że chcesz usunąć ten rekord? Tej operacji nie będzie można odwrócić.'
   },
   'app.labels': {
     'total': 'Razem',
