@@ -11,6 +11,6 @@
   padding: 0 !important;
 }
 
-.btn, .alert, .well, .form-control {
+.btn, .alert, .well, .form-control, .modal-content {
   border-radius: 0 !important;
 }

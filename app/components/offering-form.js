@@ -37,11 +37,18 @@ export default Ember.Component.extend({
       offering.save();
     },
     delete() {
+      this.set('deleteConfirmationNeeded', false);
       if (!this.get('isNewRecord')) {
         let offering = this.get('model');
         offering.destroyRecord();
         this.set('model', {});
       }
+    },
+    showDeleteConfirmation() {
+      this.set('deleteConfirmationNeeded', true);
+    },
+    cancelDelete() {
+      this.set('deleteConfirmationNeeded', false);
     }
   },
   isNewRecord: Ember.computed('model', function() {

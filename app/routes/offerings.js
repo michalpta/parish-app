@@ -5,6 +5,6 @@ export default Ember.Route.extend({
     return {
       offerings: this.store.findAll('offering'),
       parishioners: this.store.findAll('parishioner')
-    }
+    };
   }
 });

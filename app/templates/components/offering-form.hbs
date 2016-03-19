@@ -28,7 +28,16 @@
   <div>
     <button {{action 'save'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
     {{#unless isNewRecord}}
-      <a {{action 'delete'}} href="#" class="pull-right">{{t 'app.actions.delete'}}</a>
+      <a {{action 'showDeleteConfirmation'}} href="#" class="pull-right">{{t 'app.actions.delete'}}</a>
     {{/unless}}
   </div>
 </form>
+
+
+{{#if deleteConfirmationNeeded}}
+  {{#ember-wormhole to='modal-hole'}}
+    {{#modal-window title='Are you sure?' yesHandler=(action 'delete') noHandler=(action 'cancelDelete')}}
+      Are you sure you want to delete this offering?
+    {{/modal-window}}
+  {{/ember-wormhole}}
+{{/if}}

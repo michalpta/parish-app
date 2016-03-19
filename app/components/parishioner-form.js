@@ -19,11 +19,18 @@ export default Ember.Component.extend({
       parishioner.save();
     },
     delete() {
+      this.set('deleteConfirmationNeeded', false);
       if (!this.get('isNewRecord')) {
         let parishioner = this.get('model');
         parishioner.destroyRecord();
         this.set('model',{});
       }
+    },
+    showDeleteConfirmation() {
+      this.set('deleteConfirmationNeeded', true);
+    },
+    cancelDelete() {
+      this.set('deleteConfirmationNeeded', false);
     }
   },
   isNewRecord: Ember.computed('model', function() {
