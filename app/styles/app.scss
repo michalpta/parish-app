@@ -17,3 +17,6 @@ $border-radius: 2px;
 .btn, .alert, .well, .form-control, .modal-content {
   border-radius: $border-radius !important;
 }
+
+@import 'ember-power-select/themes/bootstrap';
+@import "ember-power-select";

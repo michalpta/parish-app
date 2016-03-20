@@ -10,22 +10,12 @@ export default Ember.Component.extend({
       this.setDefaultOffering();
     }
   },
-  didInsertElement: function() {
-    this.initChosen();
-    this.updateChosen();
-  },
   sortedParishioners: Ember.computed.sort('parishioners', 'sortProps'),
   sortProps: ['name'],
   actions: {
-    selectParishioner(id) {
-      if (id !== '') {
-        let parishioner = this.get('parishioners').findBy('id', id);
-        this.set('model.parishioner', parishioner);
-        this.focusValueInput();
-      }
-      else {
-        this.set('model.parishioner', null);
-      }
+    selectParishioner(parishioner) {
+      this.set('model.parishioner', parishioner);
+      this.focusValueInput();
     },
     save() {
       let offering = this.get('model');
@@ -63,20 +53,10 @@ export default Ember.Component.extend({
     this.set('model', offering);
   },
   focusParishionerInput: function() {
-    this.$('select').trigger('chosen:activate');
+    this.$('#ember-power-select-trigger-offering-parishioner').focus();
   },
   focusValueInput: function() {
     this.$('#offering-value').focus();
     this.$('#offering-value').select();
-  },
-  initChosen: function() {
-    this.$('select').chosen({ max_selected_options: 1 });
-  },
-  updateChosen: function() {
-    this.$('select').val(this.get('model.parishioner.id'));
-    this.$('select').trigger('chosen:updated');
-  },
-  chosenUpdater: function() {
-    this.updateChosen();
-  }.observes('model')
+  }
 });

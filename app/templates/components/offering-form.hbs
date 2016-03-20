@@ -10,11 +10,15 @@
   <fieldset class="margin-bottom">
     <div><label>{{t 'parishioner.name'}}</label></div>
     <div>
-    <select onchange={{action 'selectParishioner' value='target.value'}} multiple data-placeholder={{t 'app.labels.searchPlaceholder'}} class="form-control">
-      {{#each sortedParishioners as |parishioner| }}
-        <option value="{{parishioner.id}}">{{parishioner.name}} - {{parishioner.address}}</option>
-      {{/each}}
-    </select>
+    {{#power-select
+      options=sortedParishioners
+      selected=model.parishioner
+      onchange=(action 'selectParishioner')
+      searchField='nameAndAddress'
+      id='offering-parishioner'
+      as |parishioner|}}
+      {{parishioner.nameAndAddress}}
+    {{/power-select}}
     </div>
     <div><label>{{t 'offering.attributes.value'}}</label></div>
     <div>
