@@ -1,5 +1,8 @@
+$color-lighter: lightgray;
+$border-radius: 2px;
+
 .color-lighter {
-  color: lightgray;
+  color: $color-lighter;
 }
 .margin-bottom {
   margin-bottom: 15px;
@@ -12,5 +15,5 @@
 }
 
 .btn, .alert, .well, .form-control, .modal-content {
-  border-radius: 0 !important;
+  border-radius: $border-radius !important;
 }
