@@ -1,5 +1,5 @@
 $color-lighter: lightgray;
-$border-radius: 2px;
+$border-radius: 0px;
 
 .color-lighter {
   color: $color-lighter;
@@ -18,5 +18,9 @@ $border-radius: 2px;
   border-radius: $border-radius !important;
 }
 
+
 @import 'ember-power-select/themes/bootstrap';
+$ember-power-select-default-border-radius: $border-radius; // General border radius
+$ember-power-select-opened-border-radius: 0; // Border radius of the side of the dropdown and the trigger where they touch
+$ember-power-select-search-input-border-radius: 0;
 @import "ember-power-select";

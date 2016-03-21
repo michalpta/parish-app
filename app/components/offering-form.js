@@ -39,6 +39,9 @@ export default Ember.Component.extend({
     },
     cancelDelete() {
       this.set('deleteConfirmationNeeded', false);
+    },
+    powerSelectFocusHandler(select) {
+      select.actions.open();
     }
   },
   isNewRecord: Ember.computed('model', function() {
@@ -57,6 +60,6 @@ export default Ember.Component.extend({
   },
   focusValueInput: function() {
     this.$('#offering-value').focus();
-    this.$('#offering-value').select();
+    //this.$('#offering-value').select();
   }
 });
