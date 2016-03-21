@@ -11,12 +11,7 @@ export default Ember.Component.extend({
   },
   actions: {
     save() {
-      let parishioner = this.get('model');
-      if (this.get('isNewRecord')) {
-        parishioner = this.get('store').createRecord('parishioner', parishioner);
-        this.set('model', parishioner);
-      }
-      parishioner.save();
+      this.saveParishioner(this.get('model'));
     },
     delete() {
       this.set('deleteConfirmationNeeded', false);
