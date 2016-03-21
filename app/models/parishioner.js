@@ -11,5 +11,9 @@ export default DS.Model.extend({
 
   address: Ember.computed('city', 'street', 'streetNumber', function() {
     return `${this.get('city')}, ${this.get('street')} ${this.get('streetNumber')}`;
+  }),
+
+  nameAndAddress: Ember.computed('name', 'address', function() {
+    return `${this.get('name')} - ${this.get('address')}`;
   })
 });
