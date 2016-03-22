@@ -11,7 +11,7 @@ export default Ember.Component.extend({
   },
   actions: {
     save() {
-      this.saveParishioner(this.get('model'));
+      this.sendAction('save', this.get('model'));
     },
     delete() {
       this.set('deleteConfirmationNeeded', false);

@@ -1,15 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  store: Ember.inject.service(),
   model() {
-    return null;
+    return this.store.createRecord('parishioner', {});
   },
   actions: {
-    saveParishioner(parishioner) {
-      parishioner = this.get('store').createRecord('parishioner', parishioner);
+    save(parishioner) {
       parishioner.save();
-      this.transitionTo('parishioners.edit', parishioner);
+      this.transitionTo('parishioners');
     }
   }
 });
