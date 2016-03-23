@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   init: function() {
     this._super(arguments);
-    if (this.get('model') === null) {
+    if (this.get('model.isNew')) {
       this.setDefaultParishioner();
     }
   },
@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     },
     delete() {
       this.set('deleteConfirmationNeeded', false);
-      if (!this.get('isNewRecord')) {
+      if (!this.get('model.isNew')) {
         let parishioner = this.get('model');
         parishioner.destroyRecord();
         this.set('model',{});
@@ -28,17 +28,10 @@ export default Ember.Component.extend({
       this.set('deleteConfirmationNeeded', false);
     }
   },
-  isNewRecord: Ember.computed('model', function() {
-    let model = this.get('model');
-    return model.get === undefined;
-  }),
   setDefaultParishioner: function() {
-    let parishioner = {
-      name: faker.fake('{{name.lastName}} {{name.firstName}}'),
-      city: faker.address.city(),
-      street: faker.address.streetName(),
-      streetNumber: faker.random.number({ min: 1, max: 100 })
-    };
-    this.set('model', parishioner);
+    this.set('model.name', faker.fake('{{name.lastName}} {{name.firstName}}'));
+    this.set('model.city', faker.address.city());
+    this.set('model.street', faker.address.streetName());
+    this.set('model.streetNumber', faker.random.number({ min: 1, max: 100 }));
   }
 });

@@ -3,7 +3,7 @@
     {{errorMessage}}
   </div>
 {{/if}}
-{{#if isNewRecord}}
+{{#if model.isNew}}
   <div class="alert alert-warning">{{t 'app.alerts.recordNotSaved'}}</div>
 {{/if}}
 <form class="margin-bottom">
@@ -27,7 +27,7 @@
   </fieldset>
   <div>
     <button {{action 'save'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
-    {{#unless isNewRecord}}
+    {{#unless model.isNew}}
       <a {{action 'showDeleteConfirmation'}} href="#" class="pull-right">{{t 'app.actions.delete'}}</a>
     {{/unless}}
   </div>
