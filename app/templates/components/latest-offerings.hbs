@@ -13,9 +13,9 @@
     {{#each searchableOfferings as |offering|}}
       <tr>
         <td class="text-right">
-          <a {{action 'editOffering' offering.id}} class="pull-left" href="#" title="{{t 'app.actions.edit'}}">
+          {{#link-to 'offerings.edit' offering.id title=(t 'app.actions.edit') class='pull-left'}}
             <span class="glyphicon glyphicon-pencil color-lighter"></span>
-          </a>
+          {{/link-to}}
           <big><b>{{numberToLocaleString offering.value}}</b></big><br />
           <span class="small">{{offering.date}}</span>
         </td>

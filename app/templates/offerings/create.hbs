@@ -1,0 +1,11 @@
+<div class="well">
+  {{#link-to 'offerings' class='pull-right' title=(t 'app.actions.close')}}
+    <span class="glyphicon glyphicon-remove"></span>
+  {{/link-to}}
+  <h3>{{t 'offering.name'}}</h3>
+  {{offering-form
+    model=model.offering
+    parishioners=model.parishioners
+    save='save'
+    delete='delete'}}
+</div>
