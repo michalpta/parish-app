@@ -1,0 +1,7 @@
+<div class="well">
+  {{#link-to 'parishioners' class='pull-right' title=(t 'app.actions.close')}}
+    <span class="glyphicon glyphicon-remove"></span>
+  {{/link-to}}
+  <h3>{{t 'parishioner.name'}}</h3>
+  {{parishioner-form model=model save='save'}}
+</div>

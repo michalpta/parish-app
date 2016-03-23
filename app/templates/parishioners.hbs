@@ -1,14 +1,4 @@
-{{#unless isFormVisible}}
-  <button {{action 'createParishioner'}} class="btn btn-default btn-sm">
-    <span class="glyphicon glyphicon-plus"></span> {{t 'parishioner.actions.create'}}
-  </button>
-{{else}}
-  <div class="well">
-    <a {{action 'toggleIsFormVisible'}} class="pull-right" href="#" title="{{t 'app.actions.close'}}"><span class="glyphicon glyphicon-remove"></span></a>
-    <h3>{{t 'parishioner.name'}}</h3>
-    {{parishioner-form model=editedParishioner}}
-  </div>
-{{/unless}}
+{{outlet}}
 
 <h3>{{t 'parishioner.pluralName'}}</h3>
 <div class="margin-bottom">
@@ -19,9 +9,9 @@
   <div class="well">
     <p>
       <span class="uppercase">{{t 'parishioner.name'}}</span>
-      <a {{action 'editParishioner' parishioner.id}} href="#" title="{{t 'app.actions.edit'}}">
+      {{#link-to 'parishioners.edit' parishioner.id title=(t 'app.actions.edit')}}
         <span class="glyphicon glyphicon-pencil color-lighter"></span>
-      </a>
+      {{/link-to}}
     </p>
     <h3>{{parishioner.name}}</h3>
     <p>{{t 'parishioner.attributes.address'}}: {{parishioner.address}}</p>
