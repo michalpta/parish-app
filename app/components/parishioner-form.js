@@ -14,12 +14,7 @@ export default Ember.Component.extend({
       this.sendAction('save', this.get('model'));
     },
     delete() {
-      this.set('deleteConfirmationNeeded', false);
-      if (!this.get('model.isNew')) {
-        let parishioner = this.get('model');
-        parishioner.destroyRecord();
-        this.set('model',{});
-      }
+      this.sendAction('delete', this.get('model'));
     },
     showDeleteConfirmation() {
       this.set('deleteConfirmationNeeded', true);
@@ -33,5 +28,8 @@ export default Ember.Component.extend({
     this.set('model.city', faker.address.city());
     this.set('model.street', faker.address.streetName());
     this.set('model.streetNumber', faker.random.number({ min: 1, max: 100 }));
+  },
+  willDestroy() {
+    this.get('model').rollbackAttributes();
   }
 });
