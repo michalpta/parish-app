@@ -1,12 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  didInsertElement: function() {
-    let map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 50.0464284, lng: 19.7246942},
-      zoom: 10
-    });
-  },
   sortParams: ['date:desc'],
   sortedModel: Ember.computed.sort('model', 'sortParams'),
   searchableOfferings: Ember.computed('sortedModel', 'quickSearch', function() {
