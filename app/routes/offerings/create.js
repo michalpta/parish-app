@@ -8,9 +8,9 @@ export default Ember.Route.extend({
       date: moment(faker.date.past()).format('YYYY-MM-DD HH:mm'),
       value: faker.finance.amount()
     };
-    return {
+    return Ember.RSVP.hash({
       offering: this.store.createRecord('offering', offering),
       parishioners: this.store.findAll('parishioner')
-    };
+    });
   }
 });

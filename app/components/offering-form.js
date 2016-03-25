@@ -1,11 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  didInsertElement() {
-    // if (this.get('model.isNew')) {
-    //   this.focusParishionerInput();
-    // }
-  },
   sortedParishioners: Ember.computed.sort('parishioners', 'sortProps'),
   sortProps: ['name'],
   actions: {

@@ -33,7 +33,6 @@
   </div>
 </form>
 
-
 {{#if deleteConfirmationNeeded}}
   {{#ember-wormhole to='modal-hole'}}
     {{#modal-window title=(t 'app.alerts.areYouSure') yesHandler=(action 'delete') noHandler=(action 'cancelDelete')}}
