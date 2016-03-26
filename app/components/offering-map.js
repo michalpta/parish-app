@@ -19,14 +19,16 @@ export default Ember.Component.extend({
   codeOffering(offering) {
     let address = offering.get('parishioner.address');
     if (!offering.get('isNew')) {
-      this.codeAddress(address,
+      this.codeAddress(
+        address,
+        `${offering.get('parishioner.name')} - ${offering.get('parishioner.address')}`,
         `<b>${offering.get('parishioner.name')}</b><br />
          ${offering.get('parishioner.address')}<br />
          ${offering.get('parishioner.offeringsTotal')}`
       );
     }
   },
-  codeAddress(address, title) {
+  codeAddress(address, title, content) {
     let map = this.get('map');
     let geocoder = this.get('geocoder');
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -38,7 +40,7 @@ export default Ember.Component.extend({
             title: title
         });
         var infoWindow = new google.maps.InfoWindow({
-          content: title
+          content: content
         });
         marker.addListener('click', function() {
           infoWindow.open(map, marker);

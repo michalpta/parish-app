@@ -5,11 +5,11 @@ export default Ember.Component.extend({
   sortProps: ['name'],
   actions: {
     selectParishioner(parishioner) {
-      this.set('model.parishioner', parishioner);
+      this.set('selectedParishioner', parishioner);
       this.focusValueInput();
     },
     save() {
-      this.sendAction('save', this.get('model'));
+      this.sendAction('save', this.get('model'), this.get('selectedParishioner'));
       this.focusParishionerInput();
     },
     delete() {

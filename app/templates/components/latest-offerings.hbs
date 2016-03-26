@@ -2,7 +2,7 @@
   {{offering-map model=searchableOfferings}}
 {{/if}}
 {{input value=quickSearch class='form-control margin-bottom' placeholder=(t 'app.labels.searchPlaceholder')}}
-<a {{action 'toggleShowOnMap'}} class="pull-right small" href="#">{{t 'app.actions.showOnMap'}}</a>
+<span class="pull-right">{{#if showOnMap}}<span class="glyphicon glyphicon-ok"></span>{{/if}} <a {{action 'toggleShowOnMap'}} class="small" href="#">{{t 'app.actions.showOnMap'}}</a></span>
 <div><label>{{t 'app.labels.total'}}</label> {{numberToLocaleString sumOfOfferings}}</div>
 <div class="col-md-8 no-padding">
   <table class="table">

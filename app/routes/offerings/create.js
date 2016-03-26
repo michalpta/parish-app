@@ -10,7 +10,14 @@ export default Ember.Route.extend({
     };
     return Ember.RSVP.hash({
       offering: this.store.createRecord('offering', offering),
-      parishioners: this.store.findAll('parishioner')
+      parishioners: this.store.findAll('parishioner'),
+      selectedParishioner: null
     });
+  },
+  actions: {
+    save(model, parishioner) {
+      parishioner.get('offerings').addObject(model);
+      model.save().then(() => (parishioner.save().then(() => this.refresh())));
+    }
   }
 });
