@@ -15,5 +15,13 @@ export default DS.Model.extend({
 
   nameAndAddress: Ember.computed('name', 'address', function() {
     return `${this.get('name')} - ${this.get('address')}`;
+  }),
+
+  offeringsTotal: Ember.computed('offerings', 'offerings.@each', function() {
+    let total = 0;
+    this.get('offerings').forEach(function(offering) {
+      total += offering.get('value');
+    })
+    return total;
   })
 });

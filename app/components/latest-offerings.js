@@ -21,5 +21,11 @@ export default Ember.Component.extend({
       sum += Number(offering.get('value'));
     });
     return sum;
-  })
+  }),
+  showOnMap: false,
+  actions: {
+    toggleShowOnMap() {
+      this.toggleProperty('showOnMap');
+    }
+  }
 });

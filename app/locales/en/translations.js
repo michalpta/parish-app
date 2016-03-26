@@ -17,7 +17,8 @@ export default {
     'edit': 'Edit',
     'delete': 'Delete',
     'yes': 'Yes',
-    'no': 'No'
+    'no': 'No',
+    'showOnMap': 'Show on map'
   },
   'app.alerts': {
     'recordNotSaved': 'This record is not saved yet.',

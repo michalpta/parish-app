@@ -19,7 +19,11 @@ export default Ember.Component.extend({
   codeOffering(offering) {
     let address = offering.get('parishioner.address');
     if (!offering.get('isNew')) {
-      this.codeAddress(address, offering.get('parishioner.name'));
+      this.codeAddress(address,
+        `<b>${offering.get('parishioner.name')}</b><br />
+         ${offering.get('parishioner.address')}<br />
+         ${offering.get('parishioner.offeringsTotal')}`
+      );
     }
   },
   codeAddress(address, title) {
@@ -32,6 +36,12 @@ export default Ember.Component.extend({
             map: map,
             position: results[0].geometry.location,
             title: title
+        });
+        var infoWindow = new google.maps.InfoWindow({
+          content: title
+        });
+        marker.addListener('click', function() {
+          infoWindow.open(map, marker);
         });
       } else {
         console.log("Geocode was not successful for the following reason: " + status);
