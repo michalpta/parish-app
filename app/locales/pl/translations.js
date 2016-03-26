@@ -17,7 +17,8 @@ export default {
     'edit': 'Edytuj',
     'delete': 'Usuń',
     'yes': 'Tak',
-    'no': 'Nie'
+    'no': 'Nie',
+    'showOnMap': 'Pokaż na mapie'
   },
   'app.alerts': {
     'recordNotSaved': 'Ten rekord nie jest jeszcze zapisany.',
