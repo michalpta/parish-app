@@ -4,6 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'parish-app',
     environment: environment,
+    firebase: 'https://parish-app.firebaseio.com/',
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
