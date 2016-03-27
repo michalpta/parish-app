@@ -1,6 +1,11 @@
 import Ember from 'ember';
+import ENV from 'parish-app/config/environment';
 
-export default Ember.Route.extend({
+let route = null;
+
+if (ENV.useFirebase) {
+
+route = Ember.Route.extend({
   beforeModel: function() {
     return this.get('session').fetch().catch(function() {});
   },
@@ -15,3 +20,12 @@ export default Ember.Route.extend({
     }
   }
 });
+
+}
+else {
+
+route = Ember.Route.extend({});
+
+}
+
+export default route;

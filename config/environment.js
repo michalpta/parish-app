@@ -4,6 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'parish-app',
     environment: environment,
+    useFirebase: false,
     firebase: 'https://parish-app.firebaseio.com/',
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     torii: {
@@ -30,8 +31,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV['ember-cli-mirage'] = {
-      enabled: false
+    if (ENV.useFirebase) {
+      ENV['ember-cli-mirage'] = {
+        enabled: false
+      }
     }
   }
 

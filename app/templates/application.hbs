@@ -26,13 +26,11 @@
       {{#link-to 'parishioners' class="btn btn-primary"}}{{t 'parishioner.pluralName'}}{{/link-to}}
     </div>
   </div>
-  {{#if session.isAuthenticated}}
   <div class="row">
     <div class="col-xs-12">
       {{outlet}}
     </div>
   </div>
-  {{/if}}
 </div>
 
 <div id="modal-hole">
