@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'parish-app',
     environment: environment,
-    useFirebase: false,
+    useFirebase: true,
     firebase: 'https://parish-app.firebaseio.com/',
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     torii: {
