@@ -4,6 +4,12 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'parish-app',
     environment: environment,
+    useFirebase: true,
+    firebase: 'https://parish-app.firebaseio.com/',
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    torii: {
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -25,6 +31,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    if (ENV.useFirebase) {
+      ENV['ember-cli-mirage'] = {
+        enabled: false
+      }
+    }
   }
 
   if (environment === 'test') {

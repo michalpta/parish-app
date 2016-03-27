@@ -6,8 +6,8 @@ export default DS.Model.extend({
   city: DS.attr(),
   street: DS.attr(),
   streetNumber: DS.attr(),
-  streetNumberSuffix: DS.attr(),
-  offerings: DS.hasMany('offering'),
+  // streetNumberSuffix: DS.attr(),
+  offerings: DS.hasMany('offering', { async: true }),
 
   address: Ember.computed('city', 'street', 'streetNumber', function() {
     return `${this.get('city')}, ${this.get('street')} ${this.get('streetNumber')}`;
@@ -20,7 +20,7 @@ export default DS.Model.extend({
   offeringsTotal: Ember.computed('offerings', 'offerings.@each', function() {
     let total = 0;
     this.get('offerings').forEach(function(offering) {
-      total += offering.get('value');
+      total += Number(offering.get('value'));
     })
     return total;
   })

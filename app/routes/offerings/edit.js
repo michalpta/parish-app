@@ -6,5 +6,10 @@ export default Ember.Route.extend({
       offering: this.store.findRecord('offering', params.offering_id),
       parishioners: this.store.findAll('parishioner')
     });
+  },
+  actions: {
+    save(model) {
+      model.save();
+    }
   }
 });

@@ -7,7 +7,7 @@
     <div>
     {{#power-select
       options=sortedParishioners
-      selected=model.parishioner
+      selected=selectedParishioner
       onchange=(action 'selectParishioner')
       onfocus=(action 'powerSelectFocusHandler')
       searchField='nameAndAddress'

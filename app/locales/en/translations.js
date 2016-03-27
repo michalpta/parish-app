@@ -18,7 +18,9 @@ export default {
     'delete': 'Delete',
     'yes': 'Yes',
     'no': 'No',
-    'showOnMap': 'Show on map'
+    'showOnMap': 'Show on map',
+    'signIn': 'Sign In',
+    'signOut': 'Sign Out'
   },
   'app.alerts': {
     'recordNotSaved': 'This record is not saved yet.',
@@ -29,7 +31,9 @@ export default {
   },
   'app.labels': {
     'total': 'Total',
-    'searchPlaceholder': 'Quick search through records...'
+    'searchPlaceholder': 'Quick search through records...',
+    'username': 'Username',
+    'password': 'Password'
   },
   'parishioner': {
     'name': 'Parishioner',
