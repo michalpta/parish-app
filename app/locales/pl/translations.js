@@ -18,7 +18,9 @@ export default {
     'delete': 'Usuń',
     'yes': 'Tak',
     'no': 'Nie',
-    'showOnMap': 'Pokaż na mapie'
+    'showOnMap': 'Pokaż na mapie',
+    'signIn': 'Zaloguj się',
+    'signOut': 'Wyloguj się'
   },
   'app.alerts': {
     'recordNotSaved': 'Ten rekord nie jest jeszcze zapisany.',
@@ -29,7 +31,9 @@ export default {
   },
   'app.labels': {
     'total': 'Razem',
-    'searchPlaceholder': 'Szybko przeszukaj rekordy...'
+    'searchPlaceholder': 'Szybko przeszukaj rekordy...',
+    'username': 'Użytkownik',
+    'password': 'Hasło'
   },
   'parishioner': {
     'name': 'Parafianin',

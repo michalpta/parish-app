@@ -1,7 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <p class="pull-right"><a {{action setLocale 'en'}} href="">EN</a> <a {{action setLocale 'pl'}} href="">PL</a></p>
+      <div class="text-right form-inline margin-top">
+        {{#if session.isAuthenticated}}
+          <small>Logged in as {{session.currentUser.email}}</small>
+          <button {{action "signOut"}} class="btn btn-default btn-sm">{{t 'app.actions.signOut'}}</button>
+        {{else}}
+          {{input value=username class='form-control input-sm' placeholder=(t 'app.labels.username')}}
+          {{input value=password type='password' class='form-control input-sm' placeholder=(t 'app.labels.password')}}
+          <button {{action "signIn" username password}} class="btn btn-default btn-sm">{{t 'app.actions.signIn'}}</button>
+        {{/if}}
+        <a {{action setLocale 'en'}} href="">EN</a> <a {{action setLocale 'pl'}} href="">PL</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
       <h1 id="title">+ {{t 'app.name'}} <span class="color-lighter">| The Ember.js Demo(n)</span></h1>
     </div>
   </div>
