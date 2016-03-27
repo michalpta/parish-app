@@ -20,7 +20,7 @@ export default DS.Model.extend({
   offeringsTotal: Ember.computed('offerings', 'offerings.@each', function() {
     let total = 0;
     this.get('offerings').forEach(function(offering) {
-      total += offering.get('value');
+      total += Number(offering.get('value'));
     })
     return total;
   })
