@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="text-right form-inline margin-top">
-        {{#if session.isAuthenticated}}
+        {{#if isAuthenticated}}
           <small>Logged in as {{session.currentUser.email}}</small>
           <button {{action "signOut"}} class="btn btn-default btn-sm">{{t 'app.actions.signOut'}}</button>
         {{else}}
@@ -26,11 +26,13 @@
       {{#link-to 'parishioners' class="btn btn-primary"}}{{t 'parishioner.pluralName'}}{{/link-to}}
     </div>
   </div>
+  {{#if isAuthenticated}}
   <div class="row">
     <div class="col-xs-12">
       {{outlet}}
     </div>
   </div>
+  {{/if}}
 </div>
 
 <div id="modal-hole">
