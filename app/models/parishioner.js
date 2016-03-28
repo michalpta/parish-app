@@ -21,7 +21,7 @@ export default DS.Model.extend({
     let total = 0;
     this.get('offerings').forEach(function(offering) {
       total += Number(offering.get('value'));
-    })
+    });
     return total;
   })
 });

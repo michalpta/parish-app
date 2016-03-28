@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {faker} from 'ember-cli-mirage';
 
 export default Ember.Route.extend({
   model() {
@@ -7,7 +8,7 @@ export default Ember.Route.extend({
       city: faker.address.city(),
       street: faker.address.streetName(),
       streetNumber: faker.random.number({ min: 1, max: 100 })
-    }
+    };
     return this.store.createRecord('parishioner', parishioner);
   }
 });
