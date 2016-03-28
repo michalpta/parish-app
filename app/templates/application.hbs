@@ -1,14 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="text-right form-inline margin-top">
+      <div class="form-inline text-right margin-top">
         {{#if isAuthenticated}}
-          <small>Logged in as {{session.currentUser.email}}</small>
+          <small>{{session.currentUser.email}}</small>
           <button {{action "signOut"}} class="btn btn-default btn-sm">{{t 'app.actions.signOut'}}</button>
         {{else}}
+          <div class="form-group">
           {{input value=username class='form-control input-sm' placeholder=(t 'app.labels.username')}}
+          </div>
+          <div class="form-group">
           {{input value=password type='password' class='form-control input-sm' placeholder=(t 'app.labels.password')}}
+          </div>
+          <div class="form-group">
           <button {{action "signIn" username password}} class="btn btn-default btn-sm">{{t 'app.actions.signIn'}}</button>
+          </div>
         {{/if}}
         <a {{action setLocale 'en'}} href="">EN</a> <a {{action setLocale 'pl'}} href="">PL</a>
       </div>
@@ -16,7 +22,8 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <h1 id="title">+ {{t 'app.name'}} <span class="color-lighter">| The Ember.js Demo(n)</span></h1>
+      <h1 id="title">+ {{t 'app.name'}}</h1>
+      <h2 id="subtitle" class="color-lighter">The Ember.js Demo(n)</h2>
     </div>
   </div>
   <div class="row margin-bottom">

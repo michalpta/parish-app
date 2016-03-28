@@ -16,6 +16,9 @@ $border-radius: 0px;
 .no-padding {
   padding: 0 !important;
 }
+.no-margin {
+  margin: 0 !important;
+}
 
 .btn, .alert, .well, .form-control, .modal-content {
   border-radius: $border-radius !important;
@@ -31,4 +34,22 @@ $ember-power-select-search-input-border-radius: 0;
 .g-map-canvas {
   width: auto;
   height: 400px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+body {
+  font-family: 'Ubuntu';
+}
+h1 {
+  font-family: 'Great Vibes';
+  font-size: 64px;
+}
+
+#title {
+  margin-bottom: 0;
+}
+#subtitle {
+  margin-top: 0;
 }
