@@ -46,7 +46,9 @@ export default {
       'address': 'Address',
       'city': 'City',
       'street': 'Street',
-      'streetNumber': 'Street number'
+      'streetNumber': 'Street number',
+      'streetNumberSuffix': 'Street number suffix',
+      'notes': 'Notes'
     }
   },
   'offering': {

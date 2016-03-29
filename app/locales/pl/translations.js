@@ -46,7 +46,9 @@ export default {
       'address': 'Adres',
       'city': 'Miejscowość',
       'street': 'Ulica',
-      'streetNumber': 'Numer domu'
+      'streetNumber': 'Numer domu',
+      'streetNumberSuffix': 'Numer domu sufiks',
+      'notes': 'Notki'
     }
   },
   'offering': {

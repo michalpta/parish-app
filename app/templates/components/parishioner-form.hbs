@@ -19,6 +19,14 @@
     <div>
       {{input value=model.streetNumber type='number' class='form-control'}}
     </div>
+    <div><label>{{t 'parishioner.attributes.streetNumberSuffix'}}</label></div>
+    <div>
+      {{input value=model.streetNumberSuffix class='form-control'}}
+    </div>
+    <div><label>{{t 'parishioner.attributes.notes'}}</label></div>
+    <div>
+      {{textarea value=model.notes type='textarea' class='form-control'}}
+    </div>
   </fieldset>
   <div>
     <button {{action 'save'}} class="btn btn-success form-control">{{t 'app.actions.save'}}</button>
