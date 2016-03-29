@@ -8,8 +8,8 @@ export default Ember.Controller.extend({
     let filter = this.get('quickSearch');
     if (filter) {
       parishioners = parishioners.filter(function(parishioner) {
-        return parishioner.get('name').toLowerCase().indexOf(filter.toLowerCase()) !== -1 ||
-          parishioner.get('address').toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+        return parishioner.get('name').toLowerCase().includes(filter.toLowerCase()) ||
+          parishioner.get('address').toLowerCase().includes(filter.toLowerCase());
       });
     }
     return parishioners;
