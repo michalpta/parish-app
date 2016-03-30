@@ -1,6 +1,10 @@
 {
   "firebase": "parish-app",
   "public": "dist",
+  "rewrites": [{
+    "source": "**",
+    "destination": "/index.html"
+  }],
   "ignore": [
     "firebase.json",
     "**/.*",
