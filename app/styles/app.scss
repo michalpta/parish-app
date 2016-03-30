@@ -1,4 +1,5 @@
 $color-lighter: lightgray;
+$color-ultralighter: ghostwhite;
 $border-radius: 0px;
 
 .color-lighter {
@@ -47,9 +48,15 @@ h1 {
   font-size: 64px;
 }
 
-#title {
-  margin-bottom: 0;
-}
-#subtitle {
-  margin-top: 0;
+#header {
+  background-color: $color-ultralighter;
+  border-bottom: 1px solid $color-lighter;
+
+  #title {
+    margin-bottom: 0;
+  }
+  #subtitle {
+    margin-top: 0;
+  }
+
 }
