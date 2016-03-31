@@ -6,13 +6,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('offerings', function() {
-    this.route('create');
-    this.route('edit', { path: '/edit/:offering_id' });
+  this.authenticatedRoute('offerings', function() {
+    this.authenticatedRoute('create');
+    this.authenticatedRoute('edit', { path: '/edit/:offering_id' });
   });
-  this.route('parishioners', function() {
-    this.route('create');
-    this.route('edit', { path: '/edit/:parishioner_id' });
+  this.authenticatedRoute('parishioners', function() {
+    this.authenticatedRoute('create');
+    this.authenticatedRoute('edit', { path: '/edit/:parishioner_id' });
   });
 });
 

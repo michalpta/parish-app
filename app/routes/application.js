@@ -10,6 +10,9 @@ route = Ember.Route.extend({
     return this.get('session').fetch().catch(function() {});
   },
   actions: {
+    accessDenied: function() {
+      this.transitionTo('index');
+    },
     signIn: function(username, password) {
       this.get('session').open('firebase', { provider: 'password', email: username, password: password }).then(function(data) {
         console.log(data.currentUser);
@@ -17,6 +20,7 @@ route = Ember.Route.extend({
     },
     signOut: function() {
       this.get('session').close();
+      this.transitionTo('index');
     }
   }
 });
