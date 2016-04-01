@@ -9,6 +9,9 @@ export default Ember.Route.extend({
       model.save().then(() => (this.transitionTo('parishioners.edit', model.get('id'))));
     },
     delete(model) {
+      model.get('offerings').forEach(function(offering) {
+        offering.destroyRecord();
+      });
       model.destroyRecord();
       this.transitionTo('parishioners');
     }
