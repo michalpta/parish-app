@@ -1,8 +1,11 @@
 {{yield}}
 <h3>{{t 'parishioner.pluralName'}}</h3>
 <div class="margin-bottom">
-  {{offering-map model=searchableParishioners}}
+  {{#if showOnMap}}
+  {{offering-map model=offeringMapData}}
+  {{/if}}
   {{input value=quickSearch class='form-control' placeholder=(t 'app.labels.searchPlaceholder')}}
+  <div class="text-right">{{#if showOnMap}}<span class="glyphicon glyphicon-ok"></span>{{/if}} <a {{action 'toggleShowOnMap'}} class="small" href="#">{{t 'app.actions.showOnMap'}}</a></div>
 </div>
 <div>
 {{#each searchableParishioners as |parishioner|}}

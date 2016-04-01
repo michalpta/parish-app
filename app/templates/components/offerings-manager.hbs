@@ -1,10 +1,10 @@
 {{yield}}
 <h3>{{t 'offering.pluralName'}}</h3>
 {{#if showOnMap}}
-  {{offering-map model=searchableOfferings}}
+  {{offering-map model=offeringMapData}}
 {{/if}}
-{{input value=quickSearch class='form-control margin-bottom' placeholder=(t 'app.labels.searchPlaceholder')}}
-<span class="pull-right">{{#if showOnMap}}<span class="glyphicon glyphicon-ok"></span>{{/if}} <a {{action 'toggleShowOnMap'}} class="small" href="#">{{t 'app.actions.showOnMap'}}</a></span>
+{{input value=quickSearch class='form-control' placeholder=(t 'app.labels.searchPlaceholder')}}
+<div class="text-right">{{#if showOnMap}}<span class="glyphicon glyphicon-ok"></span>{{/if}} <a {{action 'toggleShowOnMap'}} class="small" href="#">{{t 'app.actions.showOnMap'}}</a></div>
 <div><label>{{t 'app.labels.total'}}</label> {{numberToLocaleString sumOfOfferings}}</div>
 <div class="col-md-8 no-padding">
   <table class="table">

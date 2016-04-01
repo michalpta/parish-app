@@ -13,5 +13,22 @@ export default Ember.Component.extend({
       });
     }
     return parishioners;
-  })
+  }),
+  offeringMapData: Ember.computed('searchableParishioners.@each', function() {
+    let data = Ember.A();
+    this.get('searchableParishioners').forEach(function(parishioner){
+      data.pushObject({
+        address: parishioner.get('address'),
+        name: parishioner.get('name'),
+        total: parishioner.get('offeringsTotal')
+      });
+    });
+    return data;
+  }),
+  showOnMap: false,
+  actions: {
+    toggleShowOnMap() {
+      this.toggleProperty('showOnMap');
+    }
+  }
 });

@@ -22,6 +22,17 @@ export default Ember.Component.extend({
     });
     return sum;
   }),
+  offeringMapData: Ember.computed('searchableOfferings.@each', function() {
+    let data = Ember.A();
+    this.get('searchableOfferings').forEach(function(offering){
+      data.pushObject({
+        address: offering.get('parishioner.address'),
+        name: offering.get('parishioner.name'),
+        total: offering.get('parishioner.offeringsTotal')
+      });
+    });
+    return data;
+  }),
   showOnMap: false,
   actions: {
     toggleShowOnMap() {

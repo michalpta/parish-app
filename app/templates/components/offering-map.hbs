@@ -1,11 +1,11 @@
 <div class="margin-bottom">
 {{#g-map markersFitMode='live' lat=50.06 lng=19.94 zoom=12 as |context|}}
   {{#each model as |offering|}}
-    {{#g-map-address-marker context address=offering.parishioner.address as |markerContext|}}
+    {{#g-map-address-marker context address=offering.address as |markerContext|}}
       {{#g-map-infowindow markerContext}}
-        <b>{{offering.parishioner.name}}</b><br />
-        {{offering.parishioner.address}}<br />
-        {{offering.parishioner.offeringsTotal}}
+        <b>{{offering.name}}</b><br />
+        {{offering.address}}<br />
+        {{offering.total}}
       {{/g-map-infowindow}}
     {{/g-map-address-marker}}
   {{/each}}
