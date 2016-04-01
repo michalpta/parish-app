@@ -1,4 +1,3 @@
-{{outlet}}
-
-<h3>{{t 'offering.pluralName'}}</h3>
-{{latest-offerings model=model}}
+{{#offerings-manager model=model}}
+  {{outlet}}
+{{/offerings-manager}}

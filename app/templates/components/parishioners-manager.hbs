@@ -1,0 +1,24 @@
+{{yield}}
+<h3>{{t 'parishioner.pluralName'}}</h3>
+<div class="margin-bottom">
+  {{offering-map model=searchableParishioners}}
+  {{input value=quickSearch class='form-control' placeholder=(t 'app.labels.searchPlaceholder')}}
+</div>
+<div>
+{{#each searchableParishioners as |parishioner|}}
+  <div class="well">
+    <p>
+      <span class="uppercase">{{t 'parishioner.name'}}</span>
+      {{#link-to 'parishioners.edit' parishioner.id title=(t 'app.actions.edit')}}
+        <span class="glyphicon glyphicon-pencil color-lighter"></span>
+      {{/link-to}}
+    </p>
+    <h3>{{parishioner.name}}</h3>
+    <p>{{t 'parishioner.attributes.address'}}: {{parishioner.address}}</p>
+    <p>{{t 'offering.pluralName'}}: {{parishioner.offeringsTotal}}</p>
+    <p>{{t 'parishioner.attributes.notes'}}: {{parishioner.notes}}</p>
+  </div>
+{{else}}
+  {{t 'app.alerts.noRecordsFound'}}
+{{/each}}
+</div>

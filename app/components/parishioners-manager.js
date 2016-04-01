@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   sortParams: ['name'],
   sortedModel: Ember.computed.sort('model', 'sortParams'),
   searchableParishioners: Ember.computed('sortedModel', 'quickSearch', function() {
@@ -13,5 +13,5 @@ export default Ember.Controller.extend({
       });
     }
     return parishioners;
-  }),
+  })
 });
