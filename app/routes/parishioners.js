@@ -6,14 +6,17 @@ export default Ember.Route.extend({
   },
   actions: {
     save(model) {
-      model.save().then(() => (this.transitionTo('parishioners.edit', model.get('id'))));
+      model.save().then(() => (this.transitionTo('parishioners')));
     },
     delete(model) {
-      model.get('offerings').forEach(function(offering) {
-        offering.destroyRecord();
+      let self = this;
+      let deletions = model.get('offerings').map(function(offering) {
+        return offering.destroyRecord();
       });
-      model.destroyRecord();
-      this.transitionTo('parishioners');
+      Ember.RSVP.all(deletions).then(function() {
+        model.destroyRecord();
+        self.transitionTo('parishioners');
+      });
     }
   }
 });
